@@ -19,4 +19,10 @@ export const allowLists = new Map<string, Array<string>> ([
       "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
       "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy"
     ]],
+    ["iferbk",
+    [
+      'GyHWBoPET9ae4YN5uioTfiPAPzSoHYQrsDViLMjJhVM4',
+      '5UsfCtHpcQmEcqcmidXs3rDbPQMaf4MCXq8p5WsgG9vd',
+    ]
+  ],
 ]);

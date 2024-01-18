@@ -89,6 +89,15 @@ const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boo
         let candyGuard;
         try {
           candyGuard = await safeFetchCandyGuard(umi, candyMachine.mintAuthority);
+          // toast candy guard found
+          // toast({
+          //   id: "candy-guard-found",
+          //   title: "Candy Guard found!",
+          //   description: "Checking eligibility...",
+          //   status: "success",
+          //   duration: 999999,
+          //   isClosable: true,
+          // });
         } catch (e) {
           console.error(e);
           toast({
