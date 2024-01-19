@@ -187,6 +187,7 @@ import {
     }, [umi, checkEligibility]);
     console.log('candymachine authority', candyMachine?.authority)
     console.log('umi identity', umi.identity.publicKey)
+    console.log('guard', candyGuard?.groups)
   
     const PageContent = () => {
       return (
