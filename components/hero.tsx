@@ -38,7 +38,6 @@ const Hero = () => {
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
     }
-
     return (
         <div className='w-full flex items-center bg-[#231f20] min-h-[90dvh] p-6 md:p-0'
             style={{
