@@ -10,20 +10,17 @@ import { useUmi } from "../utils/useUmi";
 import { fetchCandyMachine, safeFetchCandyGuard, CandyGuard, CandyMachine, AccountVersion } from "@metaplex-foundation/mpl-candy-machine"
 import styles from "../styles/Home.module.css";
 import { guardChecker } from "../utils/checkAllowed";
-import { useToast, Skeleton, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, Image, ModalHeader, ModalOverlay, Box, Divider, VStack, Flex } from '@chakra-ui/react';
-import { ButtonList } from "../components/mintButton";
+import { useToast, Text, Skeleton, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, Image, ModalHeader, ModalOverlay, Box, Divider, VStack, Flex } from '@chakra-ui/react';
+import { ButtonList } from "./mintButton";
 import { GuardReturn } from "../utils/checkerHelper";
-import { ShowNft } from "../components/showNft";
-import { InitializeModal } from "../components/initializeModal";
+import { ShowNft } from "./showNft";
+import { InitializeModal } from "./initializeModal";
+import { image, headerText } from "../settings";
 import { useSolanaTime } from "@/utils/SolanaTimeContext";
 import Navbar from "@/components/navbar";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-const WalletMultiButtonDynamic = dynamic(
-  async () =>
-    (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
-  { ssr: false }
-);
 
 const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boolean, setCheckEligibility: Dispatch<SetStateAction<boolean>>) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
@@ -108,11 +105,13 @@ const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boo
 };
 
 
-export default function Home() {
+export default function StartMint() {
+  const router = useRouter()
   const umi = useUmi();
   const solanaTime = useSolanaTime();
   const toast = useToast();
   const { isOpen: isShowNftOpen, onOpen: onShowNftOpen, onClose: onShowNftClose } = useDisclosure();
+  const [mintComplete, setMintComplete] = useState(false)
   const { isOpen: isInitializerOpen, onOpen: onInitializerOpen, onClose: onInitializerClose } = useDisclosure();
   const [mintsCreated, setMintsCreated] = useState<{ mint: PublicKey, offChainMetadata: JsonMetadata | undefined }[] | undefined>();
   const [isAllowed, setIsAllowed] = useState<boolean>(false);
@@ -193,21 +192,6 @@ export default function Home() {
   const PageContent = () => {
     return (
       <>
-        <>
-          <Modal isOpen={isInitializerOpen} onClose={onInitializerClose}>
-            <ModalOverlay />
-            <ModalContent maxW="600px">
-              <ModalHeader>Initializer</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                < InitializeModal umi={umi} candyMachine={candyMachine as CandyMachine} candyGuard={candyGuard} toast={toast} />
-              </ModalBody>
-            </ModalContent>
-          </Modal>
-
-        </>
-
-
         <Modal isOpen={isShowNftOpen} onClose={onShowNftClose}>
           <ModalOverlay />
           <ModalContent>
@@ -221,69 +205,59 @@ export default function Home() {
       </>
     );
   };
-  console.log("mintsCreated ", mintsCreated)
 
   return (
     <>
-      <Navbar />
-      <div className='bg-[#35C47D] min-h-screen flex flex-col items-center justify-center text-center space-y-8 p-8 md:p-16'>
+      <>
         <div>
-          <h3 className='font-black text-[#231f20] text-3xl leading-none md:text-[55px] max-w-3xl'>Welcome to the
-          </h3>
-          <h3 className='font-black text-[#231f20] leading-8 md:leading-normal text-3xl md:text-[55px]'>
-            MyGeoTokens Collector’s Club
-          </h3>
-        </div>
-        <p className='text-xl'>Your NFTs, Revealed!</p>
-        <img src='https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Luna-Geo.png' width={600} height={1000} alt='nfts' className='w-80' />
-        <p className='text-xl'>What would you like to do now?</p>
-        <div className='space-y-8 w-full md:max-w-md'>
-          <div className=''>
-            <Link href='https://twitter.com/mygeotokens/' target='_blank'>
-              <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='/' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Mint more!</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='https://discord.gg/VhrcfZ78Uj' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Enter out discord</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='https://mygeotokens.gitbook.io/mygeotokens' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Read out GitBook</button>
-            </Link>
+          <div>
+            {loading ? (
+              <div>
+                <Divider my="10px" />
+                <Skeleton height="30px" my="10px" />
+                <Skeleton height="30px" my="10px" />
+                <Skeleton height="30px" my="10px" />
+              </div>
+            ) : (
+              <ButtonList
+                guardList={guards}
+                candyMachine={candyMachine}
+                candyGuard={candyGuard}
+                umi={umi}
+                ownedTokens={ownedTokens}
+                toast={toast}
+                setGuardList={setGuards}
+                mintsCreated={mintsCreated}
+                setMintsCreated={setMintsCreated}
+                onOpen={onShowNftOpen}
+                setCheckEligibility={setCheckEligibility}
+              />
+            )}
           </div>
         </div>
-        <div>
-          {loading ? (
-            <div>
-              <Divider my="10px" />
-              <Skeleton height="30px" my="10px" />
-              <Skeleton height="30px" my="10px" />
-              <Skeleton height="30px" my="10px" />
-            </div>
-          ) : (
-            <ButtonList
-              guardList={guards}
-              candyMachine={candyMachine}
-              candyGuard={candyGuard}
-              umi={umi}
-              ownedTokens={ownedTokens}
-              toast={toast}
-              setGuardList={setGuards}
-              mintsCreated={mintsCreated}
-              setMintsCreated={setMintsCreated}
-              onOpen={onShowNftOpen}
-              setCheckEligibility={setCheckEligibility}
-            />
-          )}
-        </div>
-      </div>
+        <Modal isOpen={isInitializerOpen} onClose={onInitializerClose}>
+          <ModalOverlay />
+          <ModalContent maxW="600px">
+            <ModalHeader>Initializer</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              < InitializeModal umi={umi} candyMachine={candyMachine as CandyMachine} candyGuard={candyGuard} toast={toast} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+      <Modal isOpen={isShowNftOpen} onClose={onShowNftClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Your minted NFT:</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <ShowNft nfts={mintsCreated} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+
     </>
   );
 }

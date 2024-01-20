@@ -1,6 +1,8 @@
-'use client'
 import React, { useState } from 'react'
 import dynamic from "next/dynamic";
+import ConnectButton from './connect-button';
+import { useWallet } from '@solana/wallet-adapter-react';
+import StartMint from './start-mint'
 
 
 const WalletMultiButtonDynamic = dynamic(
@@ -54,7 +56,7 @@ const CircularProgress = ({ percentage, total, current }: { percentage: number, 
 };
 
 const MintNFT = () => {
-
+    const { connected } = useWallet()
     const [selectedPayment, setSelectedPayment] = useState('sol');
     const [isOpen, setIsOpen] = useState(false);
     const [qty, setQty] = useState(1);
@@ -120,10 +122,12 @@ const MintNFT = () => {
                 </div>
             </div>
             {/* red button */}
-            {/* <div className='flex items-center justify-center w-64 h-12 bg-black rounded-full mt-8'>
-                <p className='text-[#fff1e9] font-bold'>Connect wallet</p>
-            </div> */}
-            <WalletMultiButtonDynamic />
+            {
+                connected ?
+                    <StartMint />
+                    :
+                    <ConnectButton />
+            }
         </div>
     )
 }

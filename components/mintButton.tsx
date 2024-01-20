@@ -16,6 +16,7 @@ import { fetchAddressLookupTable, setComputeUnitLimit, transferSol } from "@meta
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { chooseGuardToUse, routeBuilder, mintArgsBuilder, combineTransactions, GuardButtonList } from "../utils/mintHelper";
 import { useSolanaTime } from "@/utils/SolanaTimeContext";
+import Router, { useRouter } from "next/router";
 
 const updateLoadingText = (loadingText: string | undefined, guardList: GuardReturn[], label: string, setGuardList: Dispatch<SetStateAction<GuardReturn[]>>,) => {
     const guardIndex = guardList.findIndex((g) => g.label === label);
@@ -186,6 +187,7 @@ const mintClick = async (
 
         let randSignature: Uint8Array;
         let amountSent = 0;
+
         const sendPromises = signedTransactions.map((tx, index) => {
             return umi.rpc.sendTransaction(tx)
                 .then((signature) => {
@@ -285,37 +287,6 @@ const mintClick = async (
         updateLoadingText(undefined, guardList, guardToUse.label, setGuardList);
     }
 };
-// new component called timer that calculates the remaining Time based on the bigint solana time and the bigint toTime difference.
-const Timer = ({ solanaTime, toTime, setCheckEligibility }: { solanaTime: bigint, toTime: bigint, setCheckEligibility: Dispatch<SetStateAction<boolean>> }) => {
-    const [remainingTime, setRemainingTime] = useState<bigint>(toTime - solanaTime);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setRemainingTime((prev) => {
-                return prev - BigInt(1);
-            });
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    //convert the remaining time in seconds to the amount of days, hours, minutes and seconds left
-    const days = remainingTime / BigInt(86400);
-    const hours = (remainingTime % BigInt(86400)) / BigInt(3600);
-    const minutes = (remainingTime % BigInt(3600)) / BigInt(60);
-    const seconds = remainingTime % BigInt(60);
-    if (days > BigInt(0)) {
-        return <Text fontSize="sm" fontWeight="bold">{days.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}d {hours.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}h {minutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}m {seconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}s</Text>;
-    }
-    if (hours > BigInt(0)) {
-        return <Text fontSize="sm" fontWeight="bold">{hours.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}h {minutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}m {seconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}s</Text>;
-    }
-    if (minutes > BigInt(0) || seconds > BigInt(0)) {
-        return <Text fontSize="sm" fontWeight="bold">{minutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}m {seconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}s</Text>;
-    }
-    if (remainingTime === BigInt(0)) {
-        setCheckEligibility(true);
-    }
-    return <Text></Text>;
-}
 
 type Props = {
     umi: Umi;
@@ -348,14 +319,12 @@ export function ButtonList({
     setCheckEligibility,
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
-    const [numberInputValues, setNumberInputValues] = useState<{ [label: string]: number }>({});
+    const router = useRouter()
+    const [numberInputValues, setNumberInputValues] = useState(0);
     if (!candyMachine || !candyGuard) {
         return <></>;
     }
 
-    const handleNumberInputChange = (label: string, value: number) => {
-        setNumberInputValues(prev => ({ ...prev, [label]: value }));
-      };
 
     // remove duplicates from guardList
     //fucked up bugfix
@@ -392,11 +361,11 @@ export function ButtonList({
             allowed: guard.allowed,
             header: text
                 ? text.header
-                : "header missing in settings.tsx",
-            mintText: text ? text.mintText : "mintText missing in settings.tsx",
+                : "",
+
             buttonLabel: text
                 ? text.buttonLabel
-                : "buttonLabel missing in settings.tsx",
+                : "StartDate not reached!",
             startTime,
             endTime,
             tooltip: guard.reason,
@@ -404,78 +373,70 @@ export function ButtonList({
         };
         buttonGuardList.push(buttonElement);
     }
+    console.log("mintsCreated ", mintsCreated)
 
-    const listItems = buttonGuardList.map((buttonGuard, index) => (
-        <Box key={index} marginTop={"20px"}>
-            <Divider my="10px" />
-            <HStack>
-                <Heading size='xs' textTransform='uppercase'>
-                    {buttonGuard.header}
-                </Heading>
-                <Flex justifyContent="flex-end" marginLeft="auto">
-                    {
-                        buttonGuard.endTime > createBigInt(0) && buttonGuard.endTime - solanaTime > createBigInt(0) && (!buttonGuard.startTime || buttonGuard.startTime - solanaTime <= createBigInt(0)) &&
-                        <><Text fontSize="sm" marginRight={"2"} >Ending in: </Text><Timer toTime={buttonGuard.endTime} solanaTime={solanaTime} setCheckEligibility={setCheckEligibility} /></>
-                    }
-                    {
-                        buttonGuard.startTime > createBigInt(0) && buttonGuard.startTime - solanaTime > createBigInt(0) && (!buttonGuard.endTime || solanaTime - buttonGuard.endTime <= createBigInt(0)) &&
-                        <><Text fontSize="sm" marginRight={"2"} >Starting in: </Text><Timer toTime={buttonGuard.startTime} solanaTime={solanaTime} setCheckEligibility={setCheckEligibility} /></>
-                    }
-                </Flex>
-            </HStack>
-            <SimpleGrid columns={2} spacing={5}>
-                <Text pt='2' fontSize='sm'>
-                    {buttonGuard.mintText}
-                </Text>
-                <VStack>
-                    {process.env.NEXT_PUBLIC_MULTIMINT && buttonGuard.allowed ?
-                        <NumberInput value={numberInputValues[buttonGuard.label] || 1} min={1} max={buttonGuard.maxAmount < 1 ? 1 : buttonGuard.maxAmount} size="sm" isDisabled={!buttonGuard.allowed} onChange={(valueAsString, valueAsNumber) => handleNumberInputChange(buttonGuard.label, valueAsNumber)}>
-                            <NumberInputField />
-                            <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                            </NumberInputStepper>
-                        </NumberInput>
-                        : null
-                    }
 
-                    <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
-                        <Button
-                            onClick={() =>
-                                mintClick(
-                                    umi,
-                                    buttonGuard,
-                                    candyMachine,
-                                    candyGuard,
-                                    ownedTokens,
-                                    numberInputValues[buttonGuard.label] || 1,
-                                    toast,
-                                    mintsCreated,
-                                    setMintsCreated,
-                                    guardList,
-                                    setGuardList,
-                                    onOpen,
-                                    setCheckEligibility
-                                )
-                            }
-                            key={buttonGuard.label}
-                            size="sm"
-                            backgroundColor="teal.100"
-                            isDisabled={!buttonGuard.allowed}
-                            isLoading={
-                                guardList.find((elem) => elem.label === buttonGuard.label)?.minting
-                            }
-                            loadingText={
-                                guardList.find((elem) => elem.label === buttonGuard.label)?.loadingText
-                            }
-                        >
-                            {buttonGuard.buttonLabel}
-                        </Button>
-                    </Tooltip>
-                </VStack>
-            </SimpleGrid>
-        </Box>
-    ));
+    return (
+        <>
+            {buttonGuardList.map((buttonGuard, index) => (
+                <div key={index} className="flex">
+                    {buttonGuard.allowed ? (
+                        <>
+                            {process.env.NEXT_PUBLIC_MULTIMINT && (
+                                <input
+                                    type="number"
+                                    value={numberInputValues} // make sure this is a numeric state or a string representation of a number
+                                    onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
+                                    className="bg-transparent border rounded-2xl w-1/5"
+                                />
 
-    return <>{listItems}</>;
+
+                            )}
+                            <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
+
+                                <Button
+                                    onClick={() =>
+                                        mintClick(
+                                            umi,
+                                            buttonGuard,
+                                            candyMachine,
+                                            candyGuard,
+                                            ownedTokens,
+                                            numberInputValues || 1,
+                                            toast,
+                                            mintsCreated,
+                                            setMintsCreated,
+                                            guardList,
+                                            setGuardList,
+                                            onOpen,
+                                            setCheckEligibility
+                                        )
+                                    }
+                                    className="flex items-center justify-center w-full h-12 bg-[#e05e5c] rounded-full mt-8 md:mt-0"
+                                    size="md"
+                                    backgroundColor="red.300"
+                                    color="white"
+                                    width="full"
+                                    borderRadius={50}
+                                    isLoading={
+                                        guardList.find((elem) => elem.label === buttonGuard.label)?.minting
+                                    }
+                                    loadingText={
+                                        guardList.find((elem) => elem.label === buttonGuard.label)?.loadingText
+                                    }
+                                >
+                                    {buttonGuard.buttonLabel}
+                                </Button>
+                            </Tooltip>
+                        </>
+                    ) : (
+                        null
+                    )}
+                </div>
+            ))}
+        </>
+
+    );
+
+
 }

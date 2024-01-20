@@ -10,14 +10,14 @@ import { useUmi } from "../utils/useUmi";
 import { fetchCandyMachine, safeFetchCandyGuard, CandyGuard, CandyMachine, AccountVersion } from "@metaplex-foundation/mpl-candy-machine"
 import styles from "../styles/Home.module.css";
 import { guardChecker } from "../utils/checkAllowed";
-import { useToast, Skeleton, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, Image, ModalHeader, ModalOverlay, Box, Divider, VStack, Flex } from '@chakra-ui/react';
+import { Center, Card, CardHeader, CardBody, StackDivider, Heading, Stack, useToast, Text, Skeleton, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, Image, ModalHeader, ModalOverlay, Box, Divider, VStack, Flex } from '@chakra-ui/react';
 import { ButtonList } from "../components/mintButton";
 import { GuardReturn } from "../utils/checkerHelper";
 import { ShowNft } from "../components/showNft";
 import { InitializeModal } from "../components/initializeModal";
+import { image, headerText } from "../settings";
 import { useSolanaTime } from "@/utils/SolanaTimeContext";
 import Navbar from "@/components/navbar";
-import Link from "next/link";
 
 const WalletMultiButtonDynamic = dynamic(
   async () =>
@@ -193,7 +193,78 @@ export default function Home() {
   const PageContent = () => {
     return (
       <>
+        <style jsx global>
+          {`
+        body {
+            background: #2d3748; 
+         }
+     `}
+        </style>
+        <Card>
+          <CardHeader>
+            <Flex minWidth='max-content' alignItems='center' gap='2'>
+              <Box>
+                <Heading size='md'>{headerText} </Heading>
+              </Box>
+              {loading ? (<></>) : (
+                <Flex justifyContent="flex-end" marginLeft="auto">
+                  <Box background={"teal.100"} borderRadius={"5px"} minWidth={"50px"} minHeight={"50px"} p={2} >
+                    <VStack >
+                      <Text fontSize={"sm"}>Available NFTs:</Text>
+                      <Text fontWeight={"semibold"}>{Number(candyMachine?.data.itemsAvailable) - Number(candyMachine?.itemsRedeemed)}/{Number(candyMachine?.data.itemsAvailable)}</Text>
+                    </VStack>
+                  </Box>
+                </Flex>
+              )}
+            </Flex>
+          </CardHeader>
+
+          <CardBody>
+            <Center>
+              <Box
+                rounded={'lg'}
+                mt={-12}
+                pos={'relative'}>
+                <Image
+                  rounded={'lg'}
+                  height={230}
+                  objectFit={'cover'}
+                  alt={"project Image"}
+                  src={image}
+                />
+              </Box>
+            </Center>
+            <Stack divider={<StackDivider />} spacing='8'>
+              {loading ? (
+                <div>
+                  <Divider my="10px" />
+                  <Skeleton height="30px" my="10px" />
+                  <Skeleton height="30px" my="10px" />
+                  <Skeleton height="30px" my="10px" />
+                </div>
+              ) : (
+                <ButtonList
+                  guardList={guards}
+                  candyMachine={candyMachine}
+                  candyGuard={candyGuard}
+                  umi={umi}
+                  ownedTokens={ownedTokens}
+                  toast={toast}
+                  setGuardList={setGuards}
+                  mintsCreated={mintsCreated}
+                  setMintsCreated={setMintsCreated}
+                  onOpen={onShowNftOpen}
+                  setCheckEligibility={setCheckEligibility}
+                />
+              )}
+            </Stack>
+          </CardBody>
+        </Card >
+        {/* {umi.identity.publicKey === candyMachine?.authority ? ( */}
         <>
+          <Center>
+            <Button backgroundColor={"red.200"} marginTop={"10"} onClick={onInitializerOpen}>Initialize Everything!</Button>
+          </Center>
           <Modal isOpen={isInitializerOpen} onClose={onInitializerClose}>
             <ModalOverlay />
             <ModalContent maxW="600px">
@@ -206,7 +277,10 @@ export default function Home() {
           </Modal>
 
         </>
-
+        {/* )
+             :
+            (<></>)
+          } */}
 
         <Modal isOpen={isShowNftOpen} onClose={onShowNftClose}>
           <ModalOverlay />
@@ -221,69 +295,19 @@ export default function Home() {
       </>
     );
   };
-  console.log("mintsCreated ", mintsCreated)
 
   return (
     <>
       <Navbar />
-      <div className='bg-[#35C47D] min-h-screen flex flex-col items-center justify-center text-center space-y-8 p-8 md:p-16'>
-        <div>
-          <h3 className='font-black text-[#231f20] text-3xl leading-none md:text-[55px] max-w-3xl'>Welcome to the
-          </h3>
-          <h3 className='font-black text-[#231f20] leading-8 md:leading-normal text-3xl md:text-[55px]'>
-            MyGeoTokens Collector’s Club
-          </h3>
+      <main>
+        <div className={styles.wallet}>
+          <WalletMultiButtonDynamic />
         </div>
-        <p className='text-xl'>Your NFTs, Revealed!</p>
-        <img src='https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Luna-Geo.png' width={600} height={1000} alt='nfts' className='w-80' />
-        <p className='text-xl'>What would you like to do now?</p>
-        <div className='space-y-8 w-full md:max-w-md'>
-          <div className=''>
-            <Link href='https://twitter.com/mygeotokens/' target='_blank'>
-              <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='/' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Mint more!</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='https://discord.gg/VhrcfZ78Uj' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Enter out discord</button>
-            </Link>
-          </div>
-          <div className=''>
-            <Link href='https://mygeotokens.gitbook.io/mygeotokens' target='_blank'>
-              <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Read out GitBook</button>
-            </Link>
-          </div>
+
+        <div className={styles.center}>
+          <PageContent key="content" />
         </div>
-        <div>
-          {loading ? (
-            <div>
-              <Divider my="10px" />
-              <Skeleton height="30px" my="10px" />
-              <Skeleton height="30px" my="10px" />
-              <Skeleton height="30px" my="10px" />
-            </div>
-          ) : (
-            <ButtonList
-              guardList={guards}
-              candyMachine={candyMachine}
-              candyGuard={candyGuard}
-              umi={umi}
-              ownedTokens={ownedTokens}
-              toast={toast}
-              setGuardList={setGuards}
-              mintsCreated={mintsCreated}
-              setMintsCreated={setMintsCreated}
-              onOpen={onShowNftOpen}
-              setCheckEligibility={setCheckEligibility}
-            />
-          )}
-        </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { FaDiscord, FaLinkedinIn, FaXTwitter, FaBars, FaInstagram } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
+import ConnectButton from './connect-button'
 
 const Navbar = () => {
 
@@ -26,10 +27,9 @@ const Navbar = () => {
                     <FaBars size={28} className='text-[#fff1e9]' color='' onClick={toggleMobileMenu} />
                 </div>
             </div>
-
             {/* nav */}
-            <div className='hidden md:flex items-center justify-items-end space-x-24'>
-                <ul className='flex items-center space-x-12 text-xl'>
+            <div className='hidden md:flex items-center justify-items-end space-x-8'>
+                <ul className='flex items-center space-x-8 text-xl'>
                     <Link href='https://mygeotokens.com/#about' target='_blank' className='text-[#fff1e9] hover:text-[#00d084]'>About</Link>
                     <Link href='https://mygeotokens.gitbook.io/' target='_blank' className='text-[#fff1e9] hover:text-[#00d084]'>GitBook</Link>
                     <Link href='https://mygeotokens.com/#invest' target='_blank' className='text-[#fff1e9] hover:text-[#00d084]'>Invest</Link>
@@ -37,7 +37,10 @@ const Navbar = () => {
                     <li className='text-[#fff1e9] hover:text-[#00d084]'>News & Articles</li>
                 </ul>
                 {/* social icons */}
-                <div className="flex space-x-6 items-center justify-center">
+                <div className="flex space-x-6 items-center justify-center ">
+                    <div className='max-w-xs '>
+                        <ConnectButton />
+                    </div>
                     <a href="https://discord.gg/mygeotokens" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>
                         <FaDiscord size={25} />
                     </a>

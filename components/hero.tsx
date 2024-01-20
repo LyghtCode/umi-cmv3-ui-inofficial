@@ -42,7 +42,7 @@ const Hero = () => {
     return (
         <div className='w-full flex items-center bg-[#231f20] min-h-[90dvh] p-6 md:p-0'
             style={{
-                background: `url(${currentImage})`,
+
                 transition: 'background 1s ease-in-out',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
