@@ -2,6 +2,7 @@ import { JsonMetadata } from "@metaplex-foundation/mpl-token-metadata";
 import { PublicKey } from "@metaplex-foundation/umi";
 import { Box, Text, Divider, SimpleGrid, VStack } from "@chakra-ui/react";
 import React from 'react';
+import Image from "next/image";
 
 interface TraitProps {
     heading: string;
@@ -47,22 +48,18 @@ export default function Card({ metadata }: { metadata: JsonMetadata }) {
     return (
         <Box
             position={'relative'}
-
             width={'full'}
             overflow={'hidden'}>
-
             <Box
                 key={image}
                 height={'sm'}
                 position="relative"
                 backgroundPosition="center"
                 backgroundRepeat="no-repeat"
-                backgroundSize="cover"
+                backgroundSize="contain"
                 backgroundImage={`url(${image})`}
             />
             <Text fontWeight={"semibold"} marginTop={"15px"}>{metadata.name}</Text>
-            <Text>{metadata.description}</Text>
-            <Traits metadata={metadata} />
         </Box>
     );
 }

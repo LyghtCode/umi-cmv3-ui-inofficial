@@ -224,13 +224,6 @@ const mintClick = async (
         }
         updateLoadingText(`finalizing transaction(s)`, guardList, guardToUse.label, setGuardList);
 
-        toast({
-            title: 'Mint successful!',
-            description: `You can find your NFTs in your wallet.`,
-            status: 'success',
-            duration: 90000,
-            isClosable: true,
-        })
 
         //loop umi.rpc.getTransaction(lastSignature) until it does not return null. Sleep 1 second between each try.
         let transaction: TransactionWithMeta | null = null;
@@ -274,6 +267,7 @@ const mintClick = async (
             isClosable: true,
         })
     } finally {
+
         //find the guard by guardToUse.label and set minting to true
         const guardIndex = guardList.findIndex((g) => g.label === guardToUse.label);
         if (guardIndex === -1) {
@@ -286,6 +280,13 @@ const mintClick = async (
         setCheckEligibility(true)
         updateLoadingText(undefined, guardList, guardToUse.label, setGuardList);
     }
+    toast({
+        title: 'Mint successful!',
+        description: `You can find your NFTs in your wallet.`,
+        status: 'success',
+        duration: 90000,
+        isClosable: true,
+    })
 };
 
 type Props = {
@@ -362,7 +363,6 @@ export function ButtonList({
             header: text
                 ? text.header
                 : "",
-
             buttonLabel: text
                 ? text.buttonLabel
                 : "StartDate not reached!",
@@ -374,7 +374,7 @@ export function ButtonList({
         buttonGuardList.push(buttonElement);
     }
     console.log("mintsCreated ", mintsCreated)
-
+    console.log("numberrr: ", numberInputValues)
 
     return (
         <>
@@ -382,18 +382,14 @@ export function ButtonList({
                 <div key={index} className="flex">
                     {buttonGuard.allowed ? (
                         <>
-                            {process.env.NEXT_PUBLIC_MULTIMINT && (
-                                <input
-                                    type="number"
-                                    value={numberInputValues} // make sure this is a numeric state or a string representation of a number
-                                    onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
-                                    className="bg-transparent border rounded-2xl w-1/5"
-                                />
+                            <input
+                                type="number"
+                                value={numberInputValues} // make sure this is a numeric state or a string representation of a number
+                                onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
+                                className="bg-transparent border rounded-2xl w-1/5"
+                            />
 
-
-                            )}
                             <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
-
                                 <Button
                                     onClick={() =>
                                         mintClick(
@@ -402,7 +398,7 @@ export function ButtonList({
                                             candyMachine,
                                             candyGuard,
                                             ownedTokens,
-                                            numberInputValues || 1,
+                                            numberInputValues,
                                             toast,
                                             mintsCreated,
                                             setMintsCreated,
