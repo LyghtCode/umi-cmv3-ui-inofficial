@@ -233,6 +233,13 @@ const mintClick = async (
             }
             transaction = await umi.rpc.getTransaction(randSignature);
             if (transaction) {
+                toast({
+                    title: 'Mint successful!',
+                    description: `You can find your NFTs in your wallet.`,
+                    status: 'success',
+                    duration: 90000,
+                    isClosable: true,
+                })
                 break;
             }
             await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -280,13 +287,7 @@ const mintClick = async (
         setCheckEligibility(true)
         updateLoadingText(undefined, guardList, guardToUse.label, setGuardList);
     }
-    toast({
-        title: 'Mint successful!',
-        description: `You can find your NFTs in your wallet.`,
-        status: 'success',
-        duration: 90000,
-        isClosable: true,
-    })
+
 };
 
 type Props = {
@@ -321,7 +322,8 @@ export function ButtonList({
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
     const router = useRouter()
-    const [numberInputValues, setNumberInputValues] = useState(0);
+    const [numberInputValues, setNumberInputValues] = useState(1);
+    const totalNumber = numberInputValues * 1
     if (!candyMachine || !candyGuard) {
         return <></>;
     }
@@ -379,52 +381,72 @@ export function ButtonList({
     return (
         <>
             {buttonGuardList.map((buttonGuard, index) => (
-                <div key={index} className="flex">
+                <div key={index} className="flex z-10">
                     {buttonGuard.allowed ? (
-                        <>
-                            <input
-                                type="number"
-                                value={numberInputValues} // make sure this is a numeric state or a string representation of a number
-                                onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
-                                className="bg-transparent border rounded-2xl w-1/5"
-                            />
+                        <div className="flex flex-col md:flex-row  md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2">
 
-                            <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
-                                <Button
-                                    onClick={() =>
-                                        mintClick(
-                                            umi,
-                                            buttonGuard,
-                                            candyMachine,
-                                            candyGuard,
-                                            ownedTokens,
-                                            numberInputValues,
-                                            toast,
-                                            mintsCreated,
-                                            setMintsCreated,
-                                            guardList,
-                                            setGuardList,
-                                            onOpen,
-                                            setCheckEligibility
-                                        )
-                                    }
-                                    className="flex items-center justify-center w-full h-12 bg-[#e05e5c] rounded-full mt-8 md:mt-0"
-                                    size="md"
-                                    backgroundColor="red.300"
-                                    color="white"
-                                    width="full"
-                                    borderRadius={50}
-                                    isLoading={
-                                        guardList.find((elem) => elem.label === buttonGuard.label)?.minting
-                                    }
-                                    loadingText={
-                                        guardList.find((elem) => elem.label === buttonGuard.label)?.loadingText
-                                    }
-                                >
-                                    {buttonGuard.buttonLabel}
-                                </Button>
-                            </Tooltip>
-                        </>
+                            <div>
+                                <p className='text-xl md:text-2xl font-bold text-black'>
+                                    Qty*
+                                </p>
+                                <input
+                                    type="number"
+                                    value={numberInputValues} // make sure this is a numeric state or a string representation of a number
+                                    onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
+                                    className="bg-transparent border rounded-2xl w-12 p-1 pl-2"
+                                />
+                            </div>
+                            <div>
+                                <p className='text-xl md:text-2xl font-bold text-black'>
+                                    Total
+                                </p>
+                                <div className='flex justify-center'>
+                                    <div className='w-40 h-10 bg-[#F5F5F5] rounded-lg cursor-pointer flex justify-between items-center px-2'>
+                                        <span>{totalNumber} {`SOL`}</span>
+                                        <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"} alt='Payment Icon' className='w-6 h-6' />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="w-full">
+                                <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
+                                    <Button
+                                        onClick={() =>
+                                            mintClick(
+                                                umi,
+                                                buttonGuard,
+                                                candyMachine,
+                                                candyGuard,
+                                                ownedTokens,
+                                                numberInputValues,
+                                                toast,
+                                                mintsCreated,
+                                                setMintsCreated,
+                                                guardList,
+                                                setGuardList,
+                                                onOpen,
+                                                setCheckEligibility
+                                            )
+                                        }
+                                        className="flex items-center justify-center w-full h-12 bg-[#e05e5c] rounded-full mt-4 md:mt-0"
+                                        size="md"
+                                        backgroundColor="red.300"
+                                        color="white"
+                                        width="300px"
+                                        height={"45px"}
+                                        borderRadius={50}
+                                        isLoading={
+                                            guardList.find((elem) => elem.label === buttonGuard.label)?.minting
+                                        }
+                                        loadingText={
+                                            guardList.find((elem) => elem.label === buttonGuard.label)?.loadingText
+                                        }
+                                    >
+                                        {buttonGuard.buttonLabel}
+                                    </Button>
+                                </Tooltip>
+                            </div>
+                        </div>
                     ) : (
                         null
                     )}

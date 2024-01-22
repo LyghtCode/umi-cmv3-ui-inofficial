@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import dynamic from "next/dynamic";
-import ConnectButton from './connect-button';
+import ConnectButton from './connect-mint';
 import { useWallet } from '@solana/wallet-adapter-react';
 import StartMint from './start-mint'
 
@@ -78,56 +78,15 @@ const MintNFT = () => {
                 <h3 className='text-3xl md:text-[50px] text-black font-black'>
                     Mint your NFT!
                 </h3>
-                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:gap-16 mt-2">
-                    <div>
-                        <p className='text-xl md:text-2xl font-bold text-black'>
-                            Qty*
-                        </p>
-                        {/* input */}
-
-                        <input type="number" name='qty' className='w-20 h-10 bg-transparent border p-2 rounded-lg' onChange={(e) => setQty(parseInt(e.target.value))} />
-                    </div>
-                    <div>
-                        <p className='text-xl md:text-2xl font-bold text-black'>
-                            Total*
-                        </p>
-                        {/* dropdown */}
-                        {/* <select name="payment" id="payment" className='w-40 h-10 bg-[#F5F5F5] rounded-lg'>
-                            <option value="sol">
-                                <DropdownOption value="sol" text="SOL" icon="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png" />
-                            </option>
-                            <option value="usdc">
-                                <DropdownOption value="usdc" text="USDC" icon="https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png" />
-                            </option>
-                        </select> */}
-                        <div className='flex justify-center'>
-                            <div className='w-40 h-10 bg-[#F5F5F5] rounded-lg cursor-pointer flex justify-between items-center px-2' onClick={toggleDropdown}>
-                                <span>{selectedPayment === 'sol' ? `${qty * 1} SOL` : 'USDC'}</span>
-                                <img src={selectedPayment === 'sol' ? "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png" : "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png"} alt='Payment Icon' className='w-6 h-6' />
-                            </div>
-                            {isOpen && (
-                                <div className='absolute mt-1 w-40 bg-white border rounded-lg z-0'>
-                                    <div className='hover:bg-gray-100 px-2 py-1 flex items-center cursor-pointer z-0' onClick={() => selectOption('sol')}>
-                                        <img src={'https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png'} alt='Solana' className='w-6 h-6 mr-2' />
-                                        SOL
-                                    </div>
-                                    {/* <div className='hover:bg-gray-100 px-2 py-1 flex items-center cursor-pointer' onClick={() => selectOption('usdc')}>
-                                        <img src={'https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png'} alt='USD Coin' className='w-6 h-6 mr-2' />
-                                        USDC
-                                    </div> */}
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                <div className='flex justify-center'>
+                    {
+                        connected ?
+                            <StartMint />
+                            :
+                            <ConnectButton />
+                    }
                 </div>
             </div>
-            {/* red button */}
-            {
-                connected ?
-                    <StartMint />
-                    :
-                    <ConnectButton />
-            }
         </div>
     )
 }

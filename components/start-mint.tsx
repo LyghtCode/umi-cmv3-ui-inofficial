@@ -200,9 +200,7 @@ export default function StartMint() {
             {loading ? (
               <div>
                 <Divider my="10px" />
-                <Skeleton height="30px" my="10px" />
-                <Skeleton height="30px" my="10px" />
-                <Skeleton height="30px" my="10px" />
+                <Skeleton height="50px" my="10px" />
               </div>
             ) : (
               <ButtonList
@@ -221,16 +219,6 @@ export default function StartMint() {
             )}
           </div>
         </div>
-        <Modal isOpen={isInitializerOpen} onClose={onInitializerClose}>
-          <ModalOverlay />
-          <ModalContent maxW="600px">
-            <ModalHeader>Initializer</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <InitializeModal umi={umi} candyMachine={candyMachine as CandyMachine} candyGuard={candyGuard} toast={toast} />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
       </>
 
       <Modal isOpen={isShowNftOpen} onClose={onShowNftClose} size={"full"}>

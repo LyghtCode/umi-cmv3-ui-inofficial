@@ -9,9 +9,10 @@ const WalletMultiButtonDynamic = dynamic(
 
 const ConnectButton = () => {
     return (
-        <WalletMultiButtonDynamic className='z-50' style={{
+        <WalletMultiButtonDynamic className='z-50 relative' style={{
             "color": "white",
             "fontSize": "12px",
+            "position": "relative"
         }} />
     )
 }
