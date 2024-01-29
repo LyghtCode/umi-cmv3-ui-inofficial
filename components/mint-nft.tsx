@@ -89,7 +89,6 @@ const MintNFT = () => {
                     {/* <ShareToTwitter /> */}
                 </div>
                 {
-                    (navigator.userAgent.includes('Chrome') || navigator.userAgent.includes('Safari')) &&
                     <div className='sm:hidden bg-red-300 p-3'>
                         <p className='text-white text-sm font-semibold'>
                             Please use your phantom wallet browser to mint
