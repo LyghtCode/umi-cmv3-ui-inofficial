@@ -1,9 +1,9 @@
 import React from 'react';
 
 const ShareToTwitter = () => {
-    const text = "On my way to minting the genesis collection NFT!";
-    const imageUrl = "YOUR_PUBLIC_IMAGE_URL"; // Replace with the URL of your hosted image
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://my-geo-tokens.vercel.app&hashtags=MyGeoTokens}`;
+    const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://my-geo-tokens.vercel.app&hashtags=OpenToAdventure`;
+
 
     return (
         <div>
@@ -18,3 +18,5 @@ const ShareToTwitter = () => {
 }
 
 export default ShareToTwitter;
+
+
