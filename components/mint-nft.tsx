@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import ConnectButton from './connect-mint';
 import { useWallet } from '@solana/wallet-adapter-react';
 import StartMint from './start-mint'
+import ShareToTwitter from './share-to-twitter';
 
 
 const WalletMultiButtonDynamic = dynamic(
@@ -85,6 +86,12 @@ const MintNFT = () => {
                             :
                             <ConnectButton />
                     }
+                    <ShareToTwitter />
+                </div>
+                <div className='sm:hidden'>
+                    <p className='text-white text-sm font-semibold'>
+                        Please use your phantom wallet to mint
+                    </p>
                 </div>
             </div>
         </div>

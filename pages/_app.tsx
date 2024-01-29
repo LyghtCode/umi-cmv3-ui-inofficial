@@ -44,6 +44,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{headerText}</title>
         <link rel="icon" href="/favicon.ico" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://my-geo-tokens.vercel.app" />
+        <meta property="twitter:title" content="MyGeoTokens" />
+        <meta property="twitter:description" content="Mint NOW!" />
+        <meta property="twitter:image" content="https://nftstorage.link/ipfs/bafkreibalq4tezfsukdacqetrpvnidquahvwipbevhlh3rvskw2g6iteim" />
+
       </Head>
       <ChakraProvider>
         <WalletProvider wallets={wallets}>

@@ -119,8 +119,6 @@ const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boo
   }, [umi, checkEligibility]);
 
   return { candyMachine, candyGuard };
-
-
 };
 
 
