@@ -21,6 +21,7 @@ import Navbar from "@/components/navbar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from "./footer";
+import ShareToTwitter from "./share-to-twitter";
 
 
 const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boolean, setCheckEligibility: Dispatch<SetStateAction<boolean>>) => {
@@ -240,9 +241,10 @@ export default function StartMint() {
                 <p className='text-xl'>What would you like to do now?</p>
                 <div className='space-y-8 w-full md:max-w-md'>
                   <div className=''>
-                    <Link href='https://twitter.com/mygeotokens/' target='_blank'>
+                    {/* <Link href='https://twitter.com/mygeotokens/' target='_blank'>
                       <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
-                    </Link>
+                    </Link> */}
+                    <ShareToTwitter />
                   </div>
                   <div className=''>
                     <Link href='/' target='_blank'>
@@ -259,6 +261,32 @@ export default function StartMint() {
                       <button className='bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full'>Read out GitBook</button>
                     </Link>
                   </div>
+                </div>
+              </div>
+              <div className="w-full p-4 md:p-8 bg-[#231F20] flex flex-col items-center justify-center">
+                <p className="text-white text-lg font-bold mb-4">Share your mints on X (Twitter) to receive a $SOL rebate:</p>
+                <div className="overflow-hidden">
+                  <table className="min-w-full">
+                    <thead className="bg-green-800">
+                      <tr>
+                        <th className="text-sm font-semibold text-white py-2 px-4 text-left">NFTs MINTED</th>
+                        <th className="text-sm font-semibold text-white py-2 px-4 text-left">REBATE PER NFT</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-green-700 text-white">
+                      <tr>
+                        <td className="py-2 px-4">Whitelisted 1 - 4</td>
+                        <td className="py-2 px-4">0.1</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 px-4">Whitelisted 5 (Max)</td>
+                        <td className="py-2 px-4">0.2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-4">
+                  <a href="#" className="text-green-300 hover:text-green-200">Jump into our #mint-rebate Discord channel for more info!</a>
                 </div>
               </div>
               <Footer />

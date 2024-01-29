@@ -86,13 +86,16 @@ const MintNFT = () => {
                             :
                             <ConnectButton />
                     }
-                    <ShareToTwitter />
+                    {/* <ShareToTwitter /> */}
                 </div>
-                <div className='sm:hidden'>
-                    <p className='text-white text-sm font-semibold'>
-                        Please use your phantom wallet to mint
-                    </p>
-                </div>
+                {
+                    (navigator.userAgent.includes('Chrome') || navigator.userAgent.includes('Safari')) &&
+                    <div className='sm:hidden bg-red-300 p-3'>
+                        <p className='text-white text-sm font-semibold'>
+                            Please use your phantom wallet browser to mint
+                        </p>
+                    </div>
+                }
             </div>
         </div>
     )
