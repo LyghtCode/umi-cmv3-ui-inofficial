@@ -68,7 +68,7 @@ const MintNFT = () => {
                 {/* <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' /> */}
                 <CircularProgress percentage={22} total={3333} current={734} />
             </div>
-            <div className='flex flex-col justify-start items-start'>
+            <div className='flex flex-col items-center justify-center md:justify-start md:items-start'>
                 <h3 className='text-3xl md:text-[50px] text-black font-black'>
                     Mint your NFT!
                 </h3>
@@ -80,7 +80,7 @@ const MintNFT = () => {
                         connected ?
                             <StartMint />
                             :
-                            <div className="w-full flex items-start justify-start mt-2">
+                            <div className="w-full flex md:items-start md:justify-start mt-2">
                                 <ConnectButton />
                             </div>
                     }
