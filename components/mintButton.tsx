@@ -386,7 +386,12 @@ export function ButtonList({
                                     <input
                                         type="number"
                                         value={numberInputValues} // make sure this is a numeric state or a string representation of a number
-                                        onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
+                                        onChange={(e) => {
+                                            const value = Number(e.target.value);
+                                            if (value >= 1 && value <= 5) {
+                                                setNumberInputValues(value); // Convert the string value to a number
+                                            }
+                                        }}
                                         className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
                                         min={1}
                                         max={5}
