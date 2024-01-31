@@ -384,20 +384,24 @@ export function ButtonList({
                 <div key={index} className="flex z-10">
                     {buttonGuard.allowed ? (
                         <div className="flex flex-col md:flex-row  md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2">
-
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
                                     Qty*
                                 </p>
-                                <input
-                                    type="number"
-                                    value={numberInputValues} // make sure this is a numeric state or a string representation of a number
-                                    onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
-                                    className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
-                                    min={1}
-                                    max={5}
-                                    placeholder="1"
-                                />
+                                <div>
+                                    <input
+                                        type="number"
+                                        value={numberInputValues} // make sure this is a numeric state or a string representation of a number
+                                        onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
+                                        className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
+                                        min={1}
+                                        max={5}
+                                        placeholder="1"
+                                    />
+                                </div>
+                                <p className="text-white text-[12px] md:text-[14px] mt-1">
+                                    Whitelist max 5 per wallet
+                                </p>
                             </div>
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
