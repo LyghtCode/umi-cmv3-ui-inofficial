@@ -191,6 +191,14 @@ export default function StartMint() {
   console.log('umi identity', umi.identity.publicKey)
   console.log('guard', candyGuard?.groups)
 
+  // scroll to section
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
 
 
   return (
@@ -248,6 +256,11 @@ export default function StartMint() {
                       <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
                     </Link> */}
                     <ShareToTwitter />
+                    <p className='mt-2'>Get a $SOL rebate when you share.{" "}
+                      <span onClick={() => scrollTo("rebate")} className="underline cursor-pointer">
+                        Learn More
+                      </span>
+                    </p>
                   </div>
                   <div className=''>
                     <Link href='/' target='_blank'>
@@ -267,16 +280,15 @@ export default function StartMint() {
                 </div>
               </div>
               <div className="w-full p-4 md:p-8 bg-[#231F20] flex flex-col items-center justify-center">
-                <p className="text-white text-lg font-bold mb-4">Share your mints on X (Twitter) to receive a $SOL rebate:</p>
                 <div className="overflow-hidden">
                   <table className="min-w-full">
-                    <thead className="bg-green-800">
+                    <thead className="">
                       <tr>
                         <th className="text-sm font-semibold text-white py-2 px-4 text-left">NFTs MINTED</th>
                         <th className="text-sm font-semibold text-white py-2 px-4 text-left">REBATE PER NFT</th>
                       </tr>
                     </thead>
-                    <tbody className="bg-green-700 text-white">
+                    <tbody className="text-white">
                       <tr>
                         <td className="py-2 px-4">Whitelisted 1 - 4</td>
                         <td className="py-2 px-4">0.1</td>
