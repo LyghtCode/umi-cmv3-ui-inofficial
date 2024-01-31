@@ -69,12 +69,17 @@ const MintNFT = () => {
                 <CircularProgress percentage={22} total={3333} current={734} />
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start md:items-start'>
-                <h3 className='text-3xl md:text-[50px] text-black font-black'>
-                    Mint your NFT!
-                </h3>
-                <p className="text-white text-[12px] md:text-[14px] w-full -mt-2">
-                    Whitelist max 5 per wallet
-                </p>
+                <div>
+                    <h3 className='text-3xl md:text-[50px] text-black font-black'>
+                        Mint your NFT.{" "}
+                        <span className="text-white text-[12px] md:text-[14px] w-full -mt-2 font-medium.">
+                            Whitelist max 5 per wallet
+                        </span>
+                    </h3>
+                    <p className="md:hidden text-white text-[12px] md:text-[14px] w-full -mt-2">
+                        Whitelist max 5 per wallet
+                    </p>
+                </div>
                 <div className='flex justify-center'>
                     {
                         connected ?
