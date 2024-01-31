@@ -315,7 +315,7 @@ export function ButtonList({
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
     const [numberInputValues, setNumberInputValues] = useState(1);
-    const totalNumber = numberInputValues * 1
+    const totalNumber = numberInputValues * 2
     if (!candyMachine || !candyGuard) {
         return <></>;
     }
@@ -390,7 +390,6 @@ export function ButtonList({
                                         className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
                                         min={1}
                                         max={5}
-                                        placeholder="1"
                                     />
                                 </div>
                             </div>
