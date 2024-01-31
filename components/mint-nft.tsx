@@ -68,7 +68,7 @@ const MintNFT = () => {
                 {/* <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' /> */}
                 <CircularProgress percentage={22} total={3333} current={734} />
             </div>
-            <div className=''>
+            <div className='flex flex-col justify-start items-start'>
                 <h3 className='text-3xl md:text-[50px] text-black font-black'>
                     Mint your NFT!
                 </h3>

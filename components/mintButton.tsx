@@ -369,6 +369,8 @@ export function ButtonList({
     }
     console.log("mintsCreated ", mintsCreated)
     console.log("numberrr: ", numberInputValues)
+    const notAllowedToMint = buttonGuardList.every(buttonGuard => !buttonGuard.allowed);
+
 
     return (
         <>
@@ -441,19 +443,24 @@ export function ButtonList({
                                         {buttonGuard.buttonLabel}
                                     </Button>
                                 </Tooltip>
-                                <p className="text-white text-[12px] md:text-[14px] mt-1">
+                                <p className="text-black text-[12px] md:text-[14px] mt-1">
                                     Find out how to get your $SOL rebate on the next page!
                                 </p>
                             </div>
                         </div>
                     ) : (
-                        <div className="banner">
-                            You are not allowed to mint at this time.
-                        </div>
+                        null
                     )
                     }
                 </div>
             ))}
+            {notAllowedToMint && (
+                <div className="w-full flex justify-start mt-2">
+                    <button className='flex items-center justify-center w-full h-10 bg-[#e05e5c] rounded-full md:mt-0 text-white px-4 font-semibold'>
+                        Public Mint 2/2 5 pm UTC!
+                    </button>
+                </div>
+            )}
         </>
 
     );
