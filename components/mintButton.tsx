@@ -5,18 +5,11 @@ import { DigitalAsset, DigitalAssetWithToken, JsonMetadata, fetchDigitalAsset, f
 import { mintText } from "../settings";
 import {
     Box, Button, Flex, HStack, Heading, SimpleGrid, Text, Tooltip, UseToastOptions, NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
-    VStack,
-    Divider,
 } from "@chakra-ui/react";
 import { fetchAddressLookupTable, setComputeUnitLimit, transferSol } from "@metaplex-foundation/mpl-toolbox";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { chooseGuardToUse, routeBuilder, mintArgsBuilder, combineTransactions, GuardButtonList } from "../utils/mintHelper";
 import { useSolanaTime } from "@/utils/SolanaTimeContext";
-import Router, { useRouter } from "next/router";
 
 const updateLoadingText = (loadingText: string | undefined, guardList: GuardReturn[], label: string, setGuardList: Dispatch<SetStateAction<GuardReturn[]>>,) => {
     const guardIndex = guardList.findIndex((g) => g.label === label);
@@ -321,7 +314,6 @@ export function ButtonList({
     setCheckEligibility,
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
-    const router = useRouter()
     const [numberInputValues, setNumberInputValues] = useState(1);
     const totalNumber = numberInputValues * 1
     if (!candyMachine || !candyGuard) {
@@ -455,8 +447,11 @@ export function ButtonList({
                             </div>
                         </div>
                     ) : (
-                        null
-                    )}
+                        <div className="banner">
+                            You are not allowed to mint at this time.
+                        </div>
+                    )
+                    }
                 </div>
             ))}
         </>

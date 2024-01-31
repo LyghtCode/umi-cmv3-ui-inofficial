@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
-import dynamic from "next/dynamic";
 import ConnectButton from './connect-mint';
 import { useWallet } from '@solana/wallet-adapter-react';
 import StartMint from './start-mint'
 import ShareToTwitter from './share-to-twitter';
 
-
-const WalletMultiButtonDynamic = dynamic(
-    async () =>
-        (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
-    { ssr: false }
-);
 
 const CircularProgress = ({ percentage, total, current }: { percentage: number, total: number, current: number }) => {
     const radius = 72; // Radius of the circle
