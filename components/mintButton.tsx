@@ -395,6 +395,7 @@ export function ButtonList({
                                         className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
                                         min={1}
                                         max={5}
+                                        style={{ appearance: "auto" }}
                                     />
                                 </div>
                             </div>
