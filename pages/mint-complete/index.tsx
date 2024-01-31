@@ -101,6 +101,12 @@ const MintComplete = () => {
                         MyGeoTokens Collector’s Club
                     </h3>
                 </div>
+                {/* reveal nfts button */}
+                <button className="bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300 max-w-md"
+                    onClick={() => fetchNFTs()}
+                >
+                    Reveal my NFTs
+                </button>
                 {
                     nfts.length > 0 ?
                         <p className="text-xl">Your MyGeoTokens NFTs!</p>
@@ -133,12 +139,6 @@ const MintComplete = () => {
                             ))}
                         </div>
                 }
-
-                {/* Check out my #MyGeoTokens mints! 🌟
-
-Start at mint.MyGeoTokens.com and discover more @MyGeoTokens!
-
-#OpenToAdventure */}
 
                 <p className="text-xl">What would you like to do now?</p>
                 <div className="space-y-8 w-full md:max-w-md">
