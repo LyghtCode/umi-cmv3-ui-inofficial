@@ -4,7 +4,7 @@ import { AddressLookupTableInput, KeypairSigner, PublicKey, Transaction, Transac
 import { DigitalAsset, DigitalAssetWithToken, JsonMetadata, fetchDigitalAsset, fetchJsonMetadata } from "@metaplex-foundation/mpl-token-metadata";
 import { mintText } from "../settings";
 import {
-    Box, Button, Flex, HStack, Heading, SimpleGrid, Text, Tooltip, UseToastOptions, NumberInput,
+    Box, Button, Flex, HStack, Heading, SimpleGrid, Text, Tooltip, UseToastOptions, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { fetchAddressLookupTable, setComputeUnitLimit, transferSol } from "@metaplex-foundation/mpl-toolbox";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -383,20 +383,20 @@ export function ButtonList({
                                     Qty*
                                 </p>
                                 <div>
-                                    <input
-                                        type="number"
-                                        value={numberInputValues} // make sure this is a numeric state or a string representation of a number
-                                        onChange={(e) => {
-                                            const value = Number(e.target.value);
-                                            if (value >= 1 && value <= 5) {
-                                                setNumberInputValues(value); // Convert the string value to a number
-                                            }
-                                        }}
-                                        className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
+                                    <NumberInput
+                                        size="sm"
+                                        maxW={20}
+                                        defaultValue={numberInputValues}
                                         min={1}
                                         max={5}
-                                        style={{ appearance: "auto" }}
-                                    />
+                                        onChange={(valueString) => setNumberInputValues(parseInt(valueString))}
+                                    >
+                                        <NumberInputField sx={{ _focus: { boxShadow: 'none' } }} />
+                                        <NumberInputStepper sx={{ border: 'none' }}>
+                                            <NumberIncrementStepper sx={{ border: 'none' }} />
+                                            <NumberDecrementStepper sx={{ border: 'none' }} />
+                                        </NumberInputStepper>
+                                    </NumberInput>
                                 </div>
                             </div>
                             <div>

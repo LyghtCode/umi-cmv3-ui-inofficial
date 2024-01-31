@@ -13,3 +13,13 @@ button.wallet-adapter-button-trigger {
 button.wallet-adapter-button-trigger:hover {
   background-color: rgb(var(--hover-background-rgb)) !important;
 }
+
+.input-number::-webkit-inner-spin-button,
+.input-number::-webkit-outer-spin-button {
+  -webkit-appearance: spinner;
+  -moz-appearance: textfield;
+}
+
+.input-number {
+  -moz-appearance: textfield;
+}
