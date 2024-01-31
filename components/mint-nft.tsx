@@ -80,7 +80,9 @@ const MintNFT = () => {
                         connected ?
                             <StartMint />
                             :
-                            <ConnectButton />
+                            <div className="w-full flex items-start justify-start mt-2">
+                                <ConnectButton />
+                            </div>
                     }
                     {/* <ShareToTwitter /> */}
                 </div>
