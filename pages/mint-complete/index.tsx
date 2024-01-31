@@ -82,9 +82,12 @@ const MintComplete = () => {
 
     // Call fetchNFTs inside useEffect
     useEffect(() => {
-        // console.log("wallet connected is", umi.identity.publicKey.toString());
+        console.log("wallet connected is", umi.identity.publicKey.toString());
         fetchNFTs();
     }, []);
+
+    const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
     return (
         <>
@@ -131,10 +134,18 @@ const MintComplete = () => {
                         </div>
                 }
 
+                {/* Check out my #MyGeoTokens mints! 🌟
+
+Start at mint.MyGeoTokens.com and discover more @MyGeoTokens!
+
+#OpenToAdventure */}
+
                 <p className="text-xl">What would you like to do now?</p>
                 <div className="space-y-8 w-full md:max-w-md">
                     <div className="">
-                        <Link href="https://twitter.com/mygeotokens/" target="_blank">
+                        <Link
+                            href={twitterUrl}
+                            target="_blank">
                             <button className="bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300">
                                 Share my NFTs on (X) Twitter
                             </button>
