@@ -31,16 +31,25 @@ export const allowLists = new Map<string, Array<string>>([
       "Hio2Pu5zWaT6Rm1F2wBww4zTTyKP3yzCETjgrsj8AjwS"
     ]
   ],
+  // ["Free",
+  //   [
+  //     "E8GG8TDeXgmWZP8rT7wY69BmfoE3sAzoJFBiNWABauM6",
+  //     "FDbaVGmubGrBFLK7Mh4dpQFs6CY2DkmykudTo95SsTEr",
+  //     "7tXXCzAkywwjTRW92kvdPiuBpCP6s5i2yGSRuvKR4PT9",
+  //     "3dx4gpkKfXdDKjg1TTRpxGgs71JWqzgpiKfdqongTJoM",
+  //     "AewJnyjBhQq5ZSLzf3Tj6ca3PTWtn3sLsgygS53G3eYg",
+  //     "kxCmxjVNZk45w7Yk3dYMpesVcc1eg8qo3tfVun2UUio",
+  //     "83bhZQcVE9TCbGxnGCh6WVUoJhXK6sEKUz4MjGjqbVg",
+  //     "9XCscMzW1djsytYYoMaDe7xVJFsH9vrNqbjRgnCWMNci"
+  //   ]
+  // ],
   ["Free",
     [
-      "E8GG8TDeXgmWZP8rT7wY69BmfoE3sAzoJFBiNWABauM6",
-      "FDbaVGmubGrBFLK7Mh4dpQFs6CY2DkmykudTo95SsTEr",
-      "7tXXCzAkywwjTRW92kvdPiuBpCP6s5i2yGSRuvKR4PT9",
-      "3dx4gpkKfXdDKjg1TTRpxGgs71JWqzgpiKfdqongTJoM",
-      "AewJnyjBhQq5ZSLzf3Tj6ca3PTWtn3sLsgygS53G3eYg",
-      "kxCmxjVNZk45w7Yk3dYMpesVcc1eg8qo3tfVun2UUio",
-      "83bhZQcVE9TCbGxnGCh6WVUoJhXK6sEKUz4MjGjqbVg",
-      "9XCscMzW1djsytYYoMaDe7xVJFsH9vrNqbjRgnCWMNci"
+      "5UsfCtHpcQmEcqcmidXs3rDbPQMaf4MCXq8p5WsgG9vd",
+      "5XEnUc16a4PFcqGZ85Yb59QidCE7c5yq81CkN2vtHUyd",
+      "5hggztmASo91dkHGeYiWaxapxV28q1VuPLMGjCR9xDUn",
+      "Hio2Pu5zWaT6Rm1F2wBww4zTTyKP3yzCETjgrsj8AjwS",
+      "GyHWBoPET9ae4YN5uioTfiPAPzSoHYQrsDViLMjJhVM4"
     ]
   ],
 ]);
