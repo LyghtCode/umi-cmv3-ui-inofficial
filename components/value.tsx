@@ -1,12 +1,18 @@
 import React from 'react'
 import Card from './card'
 import MintButton from './mint-button'
+import supergeoclub from '../assets/img/super-geo-club.png'
+import lunargeo from '../assets/img/lunar-geo.png'
+import globegeo from '../assets/img/globe-geo.png'
+import cliffgeo from '../assets/img/cliff-geo.png'
+import potusgeo from '../assets/img/potus-geo.png'
+import mappinggeo from '../assets/img/mapping-geo.png'
 
 const collections = [
     {
         title: 'SUPER Geo Club',
         quantity: 'Hold 1 of each NFT',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/GEO-Super-Hero_Teaser.png',
+        image: supergeoclub,
         features: [
             `An airdropped SUPER GEO NFT`,
             `5% Shared Collector's Club Rewards(bonus)`,
@@ -17,7 +23,7 @@ const collections = [
     {
         title: 'Lunar Geo',
         quantity: '33 NFTs',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Luna-Geo.png',
+        image: lunargeo,
         features: [
             `5% Shared Collector's Club Rewards`,
             `Yearly $1500 travel voucher giveaway`,
@@ -28,7 +34,7 @@ const collections = [
     {
         title: 'Globe Geo',
         quantity: '150 NFTs',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Globe-Geo.png',
+        image: globegeo,
         features: [
             `4% Shared Collector's Club Rewards`,
             `Yearly $1250 travel voucher giveaway`,
@@ -39,7 +45,7 @@ const collections = [
     {
         title: 'Cliff Hanger Geo',
         quantity: '450 NFTs',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Cliff-Hanger-Geo.png',
+        image: cliffgeo,
         features: [
             `3% Shared Collector's Club Rewards`,
             `Yearly $1000 travel voucher giveaway`,
@@ -50,7 +56,7 @@ const collections = [
     {
         title: 'POTUS Geo',
         quantity: '900 NFTs',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__POTUS-Geo.png',
+        image: potusgeo,
         features: [
             `2% Shared Collector's Club Rewards`,
             `Yearly $750 travel voucher giveaway`,
@@ -61,7 +67,7 @@ const collections = [
     {
         title: 'Mapping Geo',
         quantity: '1800 NFTs',
-        image: 'https://mygeotokens.com/wp-content/uploads/2023/12/Genesis-NFTs__Mapping-Geo.png',
+        image: mappinggeo,
         features: [
             `1% Shared Collector's Club Rewards`,
             `Yearly $500 travel voucher giveaway`,

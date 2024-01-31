@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import React from 'react'
 import { FaXTwitter, FaDiscord, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
-
+import logo from "../assets/logos/logo.gif"
+import Image from 'next/image';
 
 const Footer = () => {
     return (
@@ -9,7 +10,7 @@ const Footer = () => {
             <div className="max-w-screen-xl w-full mx-auto pt-20 pb-12 px-6 lg:px-0">
                 <div className='flex flex-col md:flex-row items-center justify-between'>
                     <div className='space-y-8 md:space-y-2'>
-                        <img src="https://mygeotokens.com/wp-content/uploads/2023/05/My-Geo-Tokens-The-Worlds-First-Geospatial-NFT-Marketplace.gif" alt="" className='w-64' />
+                        <Image width={100} height={100} src={logo} alt="" className='w-64' />
                         {/* social icons */}
                         <div className="flex space-x-6 items-center justify-center">
                             <a href="https://discord.gg/VhrcfZ78Uj" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>

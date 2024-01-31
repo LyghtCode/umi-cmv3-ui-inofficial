@@ -4,6 +4,8 @@ import { FaDiscord, FaLinkedinIn, FaXTwitter, FaBars, FaInstagram } from 'react-
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import ConnectButton from './connect-button'
+import logo from "../assets/logos/logo.gif"
+import Image from 'next/image'
 
 const DropdownMenu = () => {
     return (
@@ -32,7 +34,7 @@ const Navbar = () => {
         <div className='sticky top-0 flex items-center justify-between bg-[#231f20] w-full md:py-6 py-4 px-4 md:px-16 z-50' style={{ zIndex: 1000, }}>
             <div className='flex items-center space-x-4 w-full md:w-1/4 justify-between'>
                 <Link href='/'>
-                    <img src='https://mygeotokens.com/wp-content/uploads/2023/05/My-Geo-Tokens-The-Worlds-First-Geospatial-NFT-Marketplace.gif' alt='logo' className='w-36 md:w-56' />
+                    <Image width={100} height={100} src={logo} alt='logo' className='w-36 md:w-56' />
                 </Link>
                 <div className='md:hidden'>
                     <FaBars size={28} className='text-[#fff1e9]' color='' onClick={toggleMobileMenu} />
