@@ -84,7 +84,7 @@ const MintComplete = () => {
     useEffect(() => {
         console.log("wallet connected is", umi.identity.publicKey.toString());
         fetchNFTs();
-    }, []);
+    }, [wallet]);
 
     const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
