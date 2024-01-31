@@ -384,7 +384,7 @@ export function ButtonList({
                                 <p className='text-xl md:text-2xl font-bold text-black'>
                                     Qty*
                                 </p>
-                                <div className="md:pb-2">
+                                <div className="md:pb-2 flex justify-center">
                                     <NumberInput
                                         size="sm"
                                         maxW={20}
