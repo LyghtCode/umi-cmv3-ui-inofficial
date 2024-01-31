@@ -107,6 +107,7 @@ const MintComplete = () => {
                 {
                     isLoading ?
                         <div className="nft-gallery grid grid-cols-1 md:grid-cols-3 gap-4">
+
                             <div className="flex flex-col items-center">
                                 <div className="skeleton w-80 h-96 rounded bg-gray-300 animate-pulse"></div>
                                 <div className="skeleton w-64 h-4 rounded bg-gray-300 animate-pulse mt-2"></div>
