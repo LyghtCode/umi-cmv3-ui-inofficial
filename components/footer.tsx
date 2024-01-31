@@ -12,7 +12,7 @@ const Footer = () => {
                         <img src="https://mygeotokens.com/wp-content/uploads/2023/05/My-Geo-Tokens-The-Worlds-First-Geospatial-NFT-Marketplace.gif" alt="" className='w-64' />
                         {/* social icons */}
                         <div className="flex space-x-6 items-center justify-center">
-                            <a href="https://discord.gg/mygeotokens" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>
+                            <a href="https://discord.gg/VhrcfZ78Uj" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>
                                 <FaDiscord size={28} />
                             </a>
                             <a href="https://twitter.com/mygeotokens" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>

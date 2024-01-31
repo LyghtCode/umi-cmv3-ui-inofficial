@@ -55,7 +55,7 @@ const Navbar = () => {
                     <div className='max-w-xs '>
                         <ConnectButton />
                     </div>
-                    <a href="https://discord.gg/mygeotokens" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>
+                    <a href="https://discord.gg/VhrcfZ78Uj" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>
                         <FaDiscord size={25} />
                     </a>
                     <a href="https://twitter.com/mygeotokens" target="_blank" rel="noopener noreferrer" className='text-[#fff1e9]'>

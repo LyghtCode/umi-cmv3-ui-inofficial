@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://my-geo-tokens.vercel.app" />
+        <meta property="twitter:url" content="https://mint.mygeotokens.com" />
         <meta property="twitter:title" content="MyGeoTokens" />
         <meta property="twitter:description" content="Mint NOW!" />
         <meta property="twitter:image" content="https://nftstorage.link/ipfs/bafkreibalq4tezfsukdacqetrpvnidquahvwipbevhlh3rvskw2g6iteim" />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShareToTwitter = () => {
     const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://my-geo-tokens.vercel.app&hashtags=OpenToAdventure`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
 
     return (

@@ -367,7 +367,7 @@ export function ButtonList({
                 : "",
             buttonLabel: text
                 ? text.buttonLabel
-                : "StartDate not reached!",
+                : "Public Mint 2/2 5 pm UTC!",
             startTime,
             endTime,
             tooltip: guard.reason,
@@ -393,7 +393,10 @@ export function ButtonList({
                                     type="number"
                                     value={numberInputValues} // make sure this is a numeric state or a string representation of a number
                                     onChange={(e) => setNumberInputValues(Number(e.target.value))} // Convert the string value to a number
-                                    className="bg-transparent border rounded-2xl w-12 p-1 pl-2"
+                                    className="bg-transparent border rounded-xl w-12 p-1 pl-2 focus:ring-0 ring-0"
+                                    min={1}
+                                    max={5}
+                                    placeholder="1"
                                 />
                             </div>
                             <div>
@@ -445,6 +448,9 @@ export function ButtonList({
                                         {buttonGuard.buttonLabel}
                                     </Button>
                                 </Tooltip>
+                                <p className="text-white text-[12px] md:text-[14px] mt-1">
+                                    Find out how to get your $SOL rebate on the next page!
+                                </p>
                             </div>
                         </div>
                     ) : (

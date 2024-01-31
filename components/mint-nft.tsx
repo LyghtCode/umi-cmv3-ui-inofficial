@@ -89,7 +89,7 @@ const MintNFT = () => {
                     {/* <ShareToTwitter /> */}
                 </div>
                 {
-                    <div className='sm:hidden bg-red-300 p-3'>
+                    <div className='sm:hidden p-3'>
                         <p className='text-white text-sm font-semibold'>
                             Please use your phantom wallet browser to mint
                         </p>

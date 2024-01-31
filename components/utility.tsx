@@ -6,9 +6,9 @@ import MintButton from './mint-button';
 
 const drawers = [
     {
-        title: 'Revenue Share',
-        description1: 'As an NFT holder and member of the Collectors Club, you benefit from the marketplace\'s success.Each variation offers different levels of revenue share; hold one of each for a SUPER Geo Club NFT boost, airdropped to your wallet!',
-        description2: '20% of platform profits are distributed to the Collectors Club.',
+        title: "Early App Access",
+        description1: `As a valued member of the community, you'll gain exclusive access to the app in beta- phase and offer feedback to shape the experience of the platform.We're eager to show you what we're building when ready and listen to what you have to say before launch and after.`,
+        description2: 'Experience the app and features before anyone else.',
     },
     {
         title: 'Travel Giveaways',
@@ -20,6 +20,11 @@ const drawers = [
         title: 'Geo\'s Alpha Group',
         description1: 'Join a league of adventurers for exclusive access to future NFT collection drops and insider location hints. You have exclusive access to special events and unique opportunities launched with MyGeoTokens app.',
         description2: 'Members find out where drop locations are before anyone else.',
+    },
+    {
+        title: 'Revenue Share',
+        description1: 'As an NFT holder and member of the Collectors Club, you benefit from the marketplace\'s success.Each variation offers different levels of revenue share; hold one of each for a SUPER Geo Club NFT boost, airdropped to your wallet!',
+        description2: '20% of platform profits are distributed to the Collectors Club.',
     },
 ]
 

@@ -199,9 +199,12 @@ export default function StartMint() {
         <div>
           <div>
             {loading ? (
-              <div>
-                <Divider my="10px" />
-                <Skeleton height="50px" my="10px" />
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="h-10 rounded-xl w-48 bg-gray-300 animate-pulse block">
+                </div>
+                <div className="h-10 rounded-xl w-48 bg-gray-300 animate-pulse block">
+                </div>  <div className="h-10 rounded-xl w-48 bg-gray-300 animate-pulse block">
+                </div>
               </div>
             ) : (
               <ButtonList
