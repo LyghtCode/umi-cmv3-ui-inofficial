@@ -79,6 +79,9 @@ const MintNFT = () => {
                 <h3 className='text-3xl md:text-[50px] text-black font-black'>
                     Mint your NFT!
                 </h3>
+                <p className="text-white text-[12px] md:text-[14px] w-full -mt-2">
+                    Whitelist max 5 per wallet
+                </p>
                 <div className='flex justify-center'>
                     {
                         connected ?

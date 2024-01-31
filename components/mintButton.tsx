@@ -383,7 +383,7 @@ export function ButtonList({
             {buttonGuardList.map((buttonGuard, index) => (
                 <div key={index} className="flex z-10">
                     {buttonGuard.allowed ? (
-                        <div className="flex flex-col md:flex-row  md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2">
+                        <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:gap-16 mt-2">
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
                                     Qty*
@@ -399,9 +399,6 @@ export function ButtonList({
                                         placeholder="1"
                                     />
                                 </div>
-                                <p className="text-white text-[12px] md:text-[14px] mt-1">
-                                    Whitelist max 5 per wallet
-                                </p>
                             </div>
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
@@ -415,7 +412,7 @@ export function ButtonList({
                                 </div>
 
                             </div>
-                            <div className="w-full">
+                            <div className="w-full flex flex-col items-center">
                                 <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
                                     <Button
                                         onClick={() =>
