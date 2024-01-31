@@ -71,14 +71,14 @@ const MintNFT = () => {
             <div className='flex flex-col items-center justify-center md:justify-start md:items-start'>
                 <div>
                     <h3 className='text-3xl md:text-[50px] text-black font-black'>
-                        Mint your NFT.{" "}
-                        <span className="text-white text-[12px] md:text-[14px] w-full -mt-2 font-medium.">
-                            Whitelist max 5 per wallet
-                        </span>
+                        Mint your NFT{" "}
                     </h3>
-                    <p className="md:hidden text-white text-[12px] md:text-[14px] w-full -mt-2">
-                        Whitelist max 5 per wallet
-                    </p>
+                    <div className="flex">
+                        <p className="text-black text-[12px] md:text-[14px] w-full -mt-1">
+                            Whitelist max 5 per wallet.                             Find out how to get your $SOL rebate on the next page!
+
+                        </p>
+                    </div>
                 </div>
                 <div className='flex justify-center'>
                     {

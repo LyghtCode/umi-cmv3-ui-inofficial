@@ -379,12 +379,12 @@ export function ButtonList({
             {buttonGuardList.map((buttonGuard, index) => (
                 <div key={index} className="flex z-10">
                     {buttonGuard.allowed ? (
-                        <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:gap-16 mt-2">
+                        <div className="flex flex-col md:flex-row md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2">
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
                                     Qty*
                                 </p>
-                                <div>
+                                <div className="md:pb-2">
                                     <NumberInput
                                         size="sm"
                                         maxW={20}
@@ -450,9 +450,7 @@ export function ButtonList({
                                         {buttonGuard.buttonLabel}
                                     </Button>
                                 </Tooltip>
-                                <p className="text-black text-[12px] md:text-[14px] mt-1">
-                                    Find out how to get your $SOL rebate on the next page!
-                                </p>
+
                             </div>
                         </div>
                     ) : (
