@@ -243,7 +243,7 @@ export default function StartMint() {
                 <ShowNft nfts={mintsCreated} />
                 <p className='text-xl'>What would you like to do now?</p>
                 <div className='space-y-8 w-full md:max-w-md'>
-                  <div className=''>
+                  <div className='w-full'>
                     {/* <Link href='https://twitter.com/mygeotokens/' target='_blank'>
                       <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
                     </Link> */}

@@ -7,12 +7,12 @@ const ShareToTwitter = () => {
 
     return (
         <div>
-            <a className="twitter-share-button bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            <a className="twitter-share-button bg-black py-3 font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300 w-full"
                 href="https://twitter.com/intent/tweet?text=Hello%20worlddddddddd"
                 target='_blank'
                 rel='noopener noreferrer'
             >
-                Tweet</a>
+                Share my NFTs on (X) Twitter</a>
         </div>
     );
 }
