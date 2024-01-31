@@ -10,6 +10,7 @@ import { fetchAddressLookupTable, setComputeUnitLimit, transferSol } from "@meta
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { chooseGuardToUse, routeBuilder, mintArgsBuilder, combineTransactions, GuardButtonList } from "../utils/mintHelper";
 import { useSolanaTime } from "@/utils/SolanaTimeContext";
+import router, { useRouter } from "next/router";
 
 const updateLoadingText = (loadingText: string | undefined, guardList: GuardReturn[], label: string, setGuardList: Dispatch<SetStateAction<GuardReturn[]>>,) => {
     const guardIndex = guardList.findIndex((g) => g.label === label);
@@ -72,7 +73,6 @@ const mintClick = async (
         console.error("no guard defined!");
         return;
     }
-
     let buyBeer = true;
     if (!process.env.NEXT_PUBLIC_BUYMARKBEER) {
         buyBeer = false;
@@ -254,6 +254,7 @@ const mintClick = async (
                 setMintsCreated([...mintsCreated, { mint: nftsigners[0].publicKey, offChainMetadata: fetchedNft.jsonMetadata }]);
             }
             onOpen();
+            router.push("/mint-complete");
         }
 
     } catch (e) {
@@ -316,6 +317,7 @@ export function ButtonList({
     const solanaTime = useSolanaTime();
     const [numberInputValues, setNumberInputValues] = useState(1);
     const totalNumber = numberInputValues * 2
+    const router = useRouter();
     if (!candyMachine || !candyGuard) {
         return <></>;
     }

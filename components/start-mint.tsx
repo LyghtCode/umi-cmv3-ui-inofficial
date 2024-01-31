@@ -233,7 +233,7 @@ export default function StartMint() {
         </div>
       </>
 
-      <Modal isOpen={isShowNftOpen} onClose={onShowNftClose} size={"full"}>
+      {/* <Modal isOpen={isShowNftOpen} onClose={onShowNftClose} size={"full"}>
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
@@ -252,9 +252,6 @@ export default function StartMint() {
                 <p className='text-xl'>What would you like to do now?</p>
                 <div className='space-y-8 w-full md:max-w-md'>
                   <div className='w-full'>
-                    {/* <Link href='https://twitter.com/mygeotokens/' target='_blank'>
-                      <button className='bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300'>Share my NFTs on (X) Twitter</button>
-                    </Link> */}
                     <ShareToTwitter />
                     <p className='mt-2'>Get a $SOL rebate when you share.{" "}
                       <span onClick={() => scrollTo("rebate")} className="underline cursor-pointer">
@@ -308,7 +305,7 @@ export default function StartMint() {
             </div>
           </ModalBody>
         </ModalContent>
-      </Modal>
+      </Modal> */}
 
 
     </>
