@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       </Head>
       <ChakraProvider>
-        <WalletProvider wallets={wallets}>
+        <WalletProvider wallets={wallets} autoConnect>
           <UmiProvider endpoint={endpoint}>
             <WalletModalProvider>
               <SolanaTimeProvider>
