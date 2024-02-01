@@ -220,7 +220,7 @@ const MintComplete = () => {
                 <div className="mt-4">
                     <p className="text-white text-xl">
                         Jump into our #mint-rebate
-                        <a href="https://discord.com/channels/904825218936221768/1197331300445602012" target="_blank" rel="noreferrer" >
+                        <a href="https://discord.gg/VhrcfZ78Uj" target="_blank" rel="noreferrer" >
                             Discord channel for more info!
                         </a>
                     </p>
