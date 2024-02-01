@@ -3,7 +3,7 @@ import ConnectButton from './connect-mint';
 import { useWallet } from '@solana/wallet-adapter-react';
 import StartMint from './start-mint'
 import ShareToTwitter from './share-to-twitter';
-
+import Numbers from './number';
 
 const CircularProgress = ({ percentage, total, current }: { percentage: number, total: number, current: number }) => {
     const radius = 72; // Radius of the circle
@@ -43,7 +43,7 @@ const CircularProgress = ({ percentage, total, current }: { percentage: number, 
             <div className="absolute flex flex-col items-center justify-center">
                 <span className="font-semibold text-black">{`Minted`}</span>
                 <span className="text-3xl font-black text-black">{`${percentage}%`}</span>
-                <span className="text-sm text-black">{`${current}/${total}`}</span>
+                <Numbers />
             </div>
         </div>
     );
@@ -55,6 +55,7 @@ const MintNFT = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [qty, setQty] = useState(1);
 
+
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     const selectOption = (value: React.SetStateAction<string>) => {
@@ -65,8 +66,8 @@ const MintNFT = () => {
     return (
         <div id='mint' className='bg-[#35C47D] flex flex-col md:flex-row w-full justify-center md:space-x-16 md:items-end py-8 px-6 md:px-0 space-y-4 md:space-y-0 text-center md:text-left'>
             <div className='flex items-center justify-center'>
-                {/* <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' /> */}
-                <CircularProgress percentage={22} total={3333} current={734} />
+                <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' />
+                {/* <CircularProgress percentage={22} total={3333} current={734} /> */}
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start md:items-start'>
                 <div>
@@ -77,6 +78,9 @@ const MintNFT = () => {
                         <p className="text-black text-[12px] md:text-[14px] w-full -mt-1">
                             Whitelist max 5 per wallet. Find out how to get your $SOL rebate on the next page!
                         </p>
+                    </div>
+                    <div>
+                        Available NFTs:
                     </div>
                 </div>
                 {/* <ShareToTwitter /> */}
