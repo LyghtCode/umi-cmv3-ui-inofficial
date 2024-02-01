@@ -65,8 +65,8 @@ const MintNFT = () => {
     return (
         <div id='mint' className='bg-[#35C47D] flex flex-col md:flex-row w-full justify-center md:space-x-16 md:items-end py-8 px-6 md:px-0 space-y-4 md:space-y-0 text-center md:text-left'>
             <div className=''>
-                {/* <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' /> */}
-                <CircularProgress percentage={22} total={3333} current={734} />
+                <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' />
+                {/* <CircularProgress percentage={22} total={3333} current={734} /> */}
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start md:items-start'>
                 <div>
