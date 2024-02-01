@@ -253,11 +253,13 @@ const mintClick = async (
             else {
                 setMintsCreated([...mintsCreated, { mint: nftsigners[0].publicKey, offChainMetadata: fetchedNft.jsonMetadata }]);
             }
-            setTimeout(() => {
-                router.push("/mint-complete");
-            }, 1000);
+            router.push("/mint-complete");
             // onOpen();
         }
+        // wait for 2 seconds and redirect
+        setTimeout(() => {
+            router.push("/mint-complete");
+        }, 2000);
     } catch (e) {
         console.error(`minting failed because of ${e}`);
 
