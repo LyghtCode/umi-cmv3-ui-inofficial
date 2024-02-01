@@ -5,6 +5,8 @@ const ShareToTwitter = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com`;
 
 
+
+
     return (
         <div>
             <a className="twitter-share-button bg-black py-3 font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300 w-full"
