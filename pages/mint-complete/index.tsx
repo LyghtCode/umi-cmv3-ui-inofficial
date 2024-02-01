@@ -222,7 +222,7 @@ const MintComplete = () => {
                 </div>
                 <div className="mt-4">
                     <p className="text-white text-xl">
-                        Jump into our #mint-rebate
+                        Jump into our #mint-rebate{" "}
                         <a href="https://discord.gg/VhrcfZ78Uj" target="_blank" rel="noreferrer" >
                             Discord channel for more info!
                         </a>
