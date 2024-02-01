@@ -19,12 +19,12 @@ const Tutorials = () => {
                         {`Learn how to set up a Solana-compatible wallet, buy and send $SOL, and mint with our DApp.`}
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-12">
                     <div className="space-y-8">
                         <h4 className='font-black text-[#fff1e9] text-2xl'>How to set up your wallet</h4>
                         {/* video */}
                         <iframe
-                            className='w-full h-48 md:h-52'
+                            className='w-full h-48 md:h-80 rounded'
                             src="https://www.youtube.com/embed/cw_GayPPaKA"
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -35,7 +35,7 @@ const Tutorials = () => {
                         <h4 className='font-black text-[#fff1e9] text-2xl'>How to buy Solana</h4>
                         {/* video */}
                         <iframe
-                            className='w-full h-48 md:h-52'
+                            className='w-full h-48 md:h-80 rounded'
                             src="https://www.youtube.com/embed/zrFWMlo6AFs"
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -43,12 +43,10 @@ const Tutorials = () => {
                         </iframe>
 
                     </div>
-                    <div className="space-y-8">
+                    {/* <div className="space-y-8">
                         <h4 className='font-black text-[#fff1e9] text-2xl'>How to mint our NFTs</h4>
-                        {/* video */}
                         <p className='font-black text-2xl text-[#eea136]'>COMING SOON</p>
-
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

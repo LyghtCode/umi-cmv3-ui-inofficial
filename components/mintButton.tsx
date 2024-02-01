@@ -361,7 +361,7 @@ export function ButtonList({
                 : "",
             buttonLabel: text
                 ? text.buttonLabel
-                : "Public Mint 2/2 5 pm UTC!",
+                : "Mint Now!",
             startTime,
             endTime,
             tooltip: guard.reason,
