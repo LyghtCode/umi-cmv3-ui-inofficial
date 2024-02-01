@@ -319,7 +319,7 @@ export function ButtonList({
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
     const [numberInputValues, setNumberInputValues] = useState(1);
-    const totalNumber = 1
+    const totalNumber = 2 * numberInputValues;
     const router = useRouter();
     if (!candyMachine || !candyGuard) {
         return <></>;
@@ -411,8 +411,7 @@ export function ButtonList({
                                 <div className='flex justify-center'>
                                     <div className='w-40 h-10 bg-[#F5F5F5] rounded-lg cursor-pointer flex justify-between items-center px-2'>
                                         <span>
-                                            {/* {totalNumber} */}
-                                            0
+                                            {totalNumber}
                                             {`SOL`}</span>
                                         <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"} alt='Payment Icon' className='w-6 h-6' />
                                     </div>
