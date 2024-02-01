@@ -393,7 +393,7 @@ export function ButtonList({
                                         maxW={20}
                                         defaultValue={numberInputValues}
                                         min={1}
-                                        max={1}
+                                        max={5}
                                         onChange={(valueString) => setNumberInputValues(parseInt(valueString))}
                                     >
                                         <NumberInputField sx={{ _focus: { boxShadow: 'none' } }} />

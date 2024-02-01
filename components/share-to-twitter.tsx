@@ -9,7 +9,6 @@ const ShareToTwitter = () => {
         <div>
             <a className="twitter-share-button bg-black py-3 font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300 w-full"
                 href={twitterUrl}
-                // Note: Line breaks inside the tweet are not directly supported through the Twitter share URL. 
                 target='_blank'
                 rel='noopener noreferrer'
             >

@@ -86,7 +86,7 @@ const MintComplete = () => {
         fetchNFTs();
     }, [wallet]);
 
-    const text = "Check out my #MyGeoTokens mints! 🌟 \n\n Check out site and discover more @MyGeoTokens! \n\n #OpenToAdventure \n\n";
+    const text = "Check out my #MyGeoTokens mints! 🌟 \n\nCheck out the mint site and discover more @MyGeoTokens! 👇\n\n";
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     const twitterUrl2 = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
@@ -146,15 +146,16 @@ const MintComplete = () => {
                 <p className="text-xl">What would you like to do now?</p>
                 <div className="space-y-8 w-full md:max-w-md">
                     <div className="">
-                        <span
-                        // href={twitterUrl}
-                        // target="_blank"
+                        <a
+                            href={twitterUrl}
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             <button className="bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300">
-                                {/* Share my NFTs on (X) Twitter */}
-                                Share during WL mint for a $SOL rebate!
+                                Share my NFTs on (X) Twitter
+                                {/* Share during WL mint for a $SOL rebate! */}
                             </button>
-                        </span>
+                        </a>
                         <p className="mt-2">
                             Get a $SOL rebate when you share.{" "}
                             <span
