@@ -87,7 +87,7 @@ const MintComplete = () => {
     }, [wallet]);
 
     const text = "Check out my #MyGeoTokens mints! 🌟 \n\nCheck out the mint site and discover more @MyGeoTokens! 👇\n\n";
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com`;
     const twitterUrl2 = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
     return (
