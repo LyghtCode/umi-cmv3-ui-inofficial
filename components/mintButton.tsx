@@ -410,7 +410,10 @@ export function ButtonList({
                                 </p>
                                 <div className='flex justify-center'>
                                     <div className='w-40 h-10 bg-[#F5F5F5] rounded-lg cursor-pointer flex justify-between items-center px-2'>
-                                        <span>{totalNumber} {`SOL`}</span>
+                                        <span>
+                                            {/* {totalNumber} */}
+                                            0
+                                            {`SOL`}</span>
                                         <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"} alt='Payment Icon' className='w-6 h-6' />
                                     </div>
                                 </div>
