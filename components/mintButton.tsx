@@ -253,10 +253,13 @@ const mintClick = async (
             else {
                 setMintsCreated([...mintsCreated, { mint: nftsigners[0].publicKey, offChainMetadata: fetchedNft.jsonMetadata }]);
             }
-            onOpen();
             router.push("/mint-complete");
+            // onOpen();
         }
-
+        // wait for 2 seconds and redirect
+        setTimeout(() => {
+            router.push("/mint-complete");
+        }, 2000);
     } catch (e) {
         console.error(`minting failed because of ${e}`);
 
@@ -316,7 +319,7 @@ export function ButtonList({
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
     const [numberInputValues, setNumberInputValues] = useState(1);
-    const totalNumber = numberInputValues * 2
+    const totalNumber = 1
     const router = useRouter();
     if (!candyMachine || !candyGuard) {
         return <></>;
@@ -390,7 +393,7 @@ export function ButtonList({
                                         maxW={20}
                                         defaultValue={numberInputValues}
                                         min={1}
-                                        max={5}
+                                        max={1}
                                         onChange={(valueString) => setNumberInputValues(parseInt(valueString))}
                                     >
                                         <NumberInputField sx={{ _focus: { boxShadow: 'none' } }} />

@@ -75,7 +75,7 @@ const MintNFT = () => {
                     </h3>
                     <div className="flex">
                         <p className="text-black text-[12px] md:text-[14px] w-full -mt-1">
-                            Whitelist max 5 per wallet.                             Find out how to get your $SOL rebate on the next page!
+                            Freemint max 1 per wallet. Find out how to get your $SOL rebate on the next page!
 
                         </p>
                     </div>
@@ -89,7 +89,6 @@ const MintNFT = () => {
                                 <ConnectButton />
                             </div>
                     }
-                    {/* <ShareToTwitter /> */}
                 </div>
                 {
                     <div className='sm:hidden p-3'>
