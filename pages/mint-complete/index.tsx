@@ -88,6 +88,7 @@ const MintComplete = () => {
 
     const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
+    const twitterUrl2 = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
     return (
         <>
@@ -169,7 +170,7 @@ const MintComplete = () => {
                     <div className="">
                         <Link href="https://discord.gg/VhrcfZ78Uj" target="_blank">
                             <button className="bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full">
-                                Enter out discord
+                                Enter our discord
                             </button>
                         </Link>
                     </div>
@@ -179,7 +180,7 @@ const MintComplete = () => {
                             target="_blank"
                         >
                             <button className="bg-transparent border border-black hover:bg-black hover:text-[#35C47D] py-3 w-full font-black text-black rounded-full">
-                                Read out GitBook
+                                Read our GitBook
                             </button>
                         </Link>
                     </div>
