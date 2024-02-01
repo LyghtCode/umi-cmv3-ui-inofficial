@@ -80,6 +80,7 @@ const MintNFT = () => {
                         </p>
                     </div>
                 </div>
+                {/* <ShareToTwitter /> */}
                 <div className='flex justify-center'>
                     {
                         connected ?

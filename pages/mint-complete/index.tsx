@@ -86,8 +86,8 @@ const MintComplete = () => {
         fetchNFTs();
     }, [wallet]);
 
-    const text = "Check out my #MyGeoTokens mints! 🌟 Check out site and discover more @MyGeoTokens!";
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
+    const text = "Check out my #MyGeoTokens mints! 🌟 \n\n Check out site and discover more @MyGeoTokens! \n\n #OpenToAdventure \n\n";
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     const twitterUrl2 = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://mint.mygeotokens.com&hashtags=OpenToAdventure`;
 
     return (
