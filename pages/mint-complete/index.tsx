@@ -146,13 +146,15 @@ const MintComplete = () => {
                 <p className="text-xl">What would you like to do now?</p>
                 <div className="space-y-8 w-full md:max-w-md">
                     <div className="">
-                        <Link
-                            href={twitterUrl}
-                            target="_blank">
+                        <span
+                        // href={twitterUrl}
+                        // target="_blank"
+                        >
                             <button className="bg-black py-3 w-full font-black text-[#35C47D] rounded-full hover:bg-white hover:text-black transition-all duration-300">
-                                Share my NFTs on (X) Twitter
+                                {/* Share my NFTs on (X) Twitter */}
+                                Share during WL mint for a $SOL rebate!
                             </button>
-                        </Link>
+                        </span>
                         <p className="mt-2">
                             Get a $SOL rebate when you share.{" "}
                             <span
