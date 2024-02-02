@@ -15,7 +15,6 @@ const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boo
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [candyGuard, setCandyGuard] = useState<CandyGuard>();
 
-
   useEffect(() => {
     (async () => {
       if (checkEligibility) {
@@ -59,11 +58,7 @@ const useCandyMachine = (umi: Umi, candyMachineId: string, checkEligibility: boo
 
   const itemsRedeemed = candyMachine?.itemsRedeemed;
   const itemsAvailable = candyMachine?.data?.itemsAvailable;
-
-
   return { candyMachine, candyGuard, itemsRedeemed, itemsAvailable };
-
-
 };
 
 
@@ -120,23 +115,11 @@ export default function Numbers() {
     };
 
     checkEligibility();
-    // On purpose: not check for candyMachine, candyGuard, solanaTime
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [umi, checkEligibility]);
-
-  const PageContent = () => {
-    return (
-      <>
-        <p className="font-semibold">{Number(candyMachine?.itemsRedeemed)}/{Number(candyMachine?.data.itemsAvailable)}</p>
-      </>
-    );
-  };
 
   return (
     <main>
-      <div>
-        <PageContent key="content" />
-      </div>
+      <p className="font-semibold">{Number(candyMachine?.itemsRedeemed)}/{Number(candyMachine?.data.itemsAvailable)}</p>
     </main>
   );
 }

@@ -33,9 +33,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:title" content={headerText} />
         <meta
           property="og:description"
-          content="Website is based on MarkSackerbers work"
+          content="Mint your Geo Genesis NFT now"
         />
-        <meta name="description" content="Website is based on MarkSackerbers work" />
+        <meta name="description" content="Mint your Geo Genesis NFT now" />
 
         <meta
           property="og:image"
