@@ -41,6 +41,10 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:image"
           content={image}
         />
+        <meta
+          property="og:image:secure_url"
+          content="https://nftstorage.link/ipfs/bafkreibalq4tezfsukdacqetrpvnidquahvwipbevhlh3rvskw2g6iteim"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{headerText}</title>
         <link rel="icon" href="/favicon.ico" />
