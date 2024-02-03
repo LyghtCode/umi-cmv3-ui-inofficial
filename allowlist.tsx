@@ -488,6 +488,9 @@ export const allowLists = new Map<string, Array<string>>([
       "YSx7TxDiuAmEMntFfCMsUVcQEkFauYouMPHEah5geU1",
       "yX6F4NxPVyfG85wnnKPNLVE282cvzGMPfvUd3VgJJMq",
       "zuoZG8WLEBX9pcnaAo1mQceBGwbn1mw37YN98PWURsk",
+      "F8i7V7wiihBAMnugwzaqb8r89fCEFAP1TK22KZ7yBgdW",
+      "E5vAVvNkqQhqifz3mMnE3mPGWDDwptRyDV8VTxDVdPU6",
+      "6WgGNj2ZRGgBAgE3XKCN3hqNJtELY7TpZfjd1WfHkKK2",
     ]
   ],
   // ["Free",
