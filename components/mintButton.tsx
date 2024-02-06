@@ -467,7 +467,7 @@ export function ButtonList({
             {notAllowedToMint && (
                 <div className="w-full flex justify-start mt-2">
                     <button className='flex items-center justify-center w-full h-10 bg-[#e05e5c] rounded-full md:mt-0 text-white px-4 font-semibold '>
-                        Not enough SOL to mint!
+                        Not enough $SOL to mint!
                     </button>
                 </div>
             )}
