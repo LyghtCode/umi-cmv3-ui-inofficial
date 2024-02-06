@@ -79,9 +79,9 @@ const MintNFT = () => {
                             Whitelist max 5 per wallet. Find out how to get your $SOL rebate on the next page!
                         </p>
                     </div>
-                    <div>
+                    {/* <div>
                         Available NFTs:
-                    </div>
+                    </div> */}
                 </div>
                 {/* <ShareToTwitter /> */}
                 <div className='flex justify-center'>
