@@ -64,7 +64,7 @@ const MintNFT = () => {
     };
 
     return (
-        <div id='mint' className='bg-[#35C47D] flex flex-col md:flex-row w-full justify-center md:space-x-16 md:items-end py-8 px-6 md:px-0 space-y-4 md:space-y-0 text-center md:text-left'>
+        <div id='mint' className='bg-[#35C47D] flex flex-col md:flex-row w-full justify-center md:space-x-16 md:items-start py-8 px-6 md:px-0 space-y-4 md:space-y-0 text-center md:text-left'>
             <div className='flex items-center justify-center'>
                 <img src="https://mygeotokens.com/wp-content/uploads/2023/12/Mint-a-MyGeoTokens-NFT.png" alt="" className='w-40' />
                 {/* <CircularProgress percentage={22} total={3333} current={734} /> */}
@@ -76,7 +76,7 @@ const MintNFT = () => {
                     </h3>
                     <div className="flex">
                         <p className="text-black text-[12px] md:text-[14px] w-full -mt-1">
-                            Whitelist max 5 per wallet. Find out how to get your $SOL rebate on the next page!
+                            Find out how to get your $SOL rebate on the next page!
                         </p>
                     </div>
                     {/* <div>

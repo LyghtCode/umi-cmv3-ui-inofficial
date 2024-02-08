@@ -287,6 +287,8 @@ const mintClick = async (
 
 };
 
+
+
 type Props = {
     umi: Umi;
     guardList: GuardReturn[];
@@ -319,7 +321,7 @@ export function ButtonList({
 }: Props): JSX.Element {
     const solanaTime = useSolanaTime();
     const [numberInputValues, setNumberInputValues] = useState(1);
-    const totalNumber = 2 * numberInputValues;
+    const totalNumber = numberInputValues;
     const router = useRouter();
     if (!candyMachine || !candyGuard) {
         return <></>;
@@ -365,6 +367,7 @@ export function ButtonList({
             buttonLabel: text
                 ? text.buttonLabel
                 : "Mint Now!",
+            reason: guard.reason,
             startTime,
             endTime,
             tooltip: guard.reason,
@@ -376,13 +379,22 @@ export function ButtonList({
     console.log("numberrr: ", numberInputValues)
     const notAllowedToMint = buttonGuardList.every(buttonGuard => !buttonGuard.allowed);
 
-
     return (
         <>
             {buttonGuardList.map((buttonGuard, index) => (
-                <div key={index} className="flex z-10">
+                <div key={index} className="z-10">
+                    <div className="md:mt-2">
+                        <h3 className='text-xl md:text-2xl text-black font-bold'>
+                            {buttonGuard.label}
+                        </h3>
+                        <p>
+                            {
+                                buttonGuard.label === "Public" ? `Whitelist max 5 per wallet.` : `Public max 25 per wallet.`
+                            }
+                        </p>
+                    </div>
                     {buttonGuard.allowed ? (
-                        <div className="flex flex-col md:flex-row md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2">
+                        <div className="flex flex-col md:flex-row md:items-end space-y-4 md:space-y-0 md:gap-16 mt-2 md:mt-0">
                             <div>
                                 <p className='text-xl md:text-2xl font-bold text-black'>
                                     Qty*
@@ -390,10 +402,10 @@ export function ButtonList({
                                 <div className="md:pb-2 flex justify-center">
                                     <NumberInput
                                         size="sm"
-                                        maxW={20}
+                                        maxW={32} // Adjusted maxW to accommodate larger numbers
                                         defaultValue={numberInputValues}
                                         min={1}
-                                        max={5}
+                                        max={buttonGuard.label === "Public" ? 25 : 5}
                                         onChange={(valueString) => setNumberInputValues(parseInt(valueString))}
                                     >
                                         <NumberInputField sx={{ _focus: { boxShadow: 'none' } }} />
@@ -411,12 +423,13 @@ export function ButtonList({
                                 <div className='flex justify-center'>
                                     <div className='w-40 h-10 bg-[#F5F5F5] rounded-lg cursor-pointer flex justify-between items-center px-2'>
                                         <span>
-                                            {totalNumber}{' '}
+                                            {
+                                                buttonGuard.label === "Public" ? totalNumber * 2.5 : totalNumber * 2
+                                            }{' '}
                                             {`SOL`}</span>
                                         <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"} alt='Payment Icon' className='w-6 h-6' />
                                     </div>
                                 </div>
-
                             </div>
                             <div className="w-full flex flex-col items-center">
                                 <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
@@ -438,9 +451,9 @@ export function ButtonList({
                                                 setCheckEligibility
                                             )
                                         }
-                                        className="flex items-center justify-center w-full h-12 bg-[#e05e5c] rounded-full mt-4 md:mt-0"
+                                        className="flex items-center justify-center w-full h-12 bg-[#cf504e] rounded-full mt-4 md:mt-0"
                                         size="md"
-                                        backgroundColor="red.300"
+                                        backgroundColor="red.400"
                                         color="white"
                                         width="300px"
                                         height={"45px"}
@@ -455,22 +468,28 @@ export function ButtonList({
                                         {buttonGuard.buttonLabel}
                                     </Button>
                                 </Tooltip>
-
                             </div>
                         </div>
                     ) : (
-                        null
+                        <div className="w-full justify-start mt-2 space-y-2">
+                            <button className='flex items-center justify-center h-10 bg-[#e05e5c] rounded-full md:mt-0 text-white px-4 w-64 font-semibold '>
+                                {buttonGuard.allowed ? "Mint Now!" : `${buttonGuard.reason}`}
+                            </button>
+                        </div>
                     )
                     }
+                    <div className="border border-black my-4">
+
+                    </div>
                 </div>
             ))}
-            {notAllowedToMint && (
+            {/* {notAllowedToMint && (
                 <div className="w-full flex justify-start mt-2">
                     <button className='flex items-center justify-center w-full h-10 bg-[#e05e5c] rounded-full md:mt-0 text-white px-4 font-semibold '>
                         Not enough $SOL to mint!
                     </button>
                 </div>
-            )}
+            )} */}
         </>
 
     );

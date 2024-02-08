@@ -95,7 +95,7 @@ export const guardChecker = async (
         guardReturn.push({
           label: eachGuard.label,
           allowed: false,
-          reason: "Wallet does not exist. Do you have SOL?",
+          reason: "Wallet is not whitelisted",
           maxAmount: 0
         });
       }
@@ -153,7 +153,7 @@ export const guardChecker = async (
         guardReturn.push({
           label: eachGuard.label,
           allowed: false,
-          reason: "Wallet not allowlisted",
+          reason: "Wallet not whitelisted",
           maxAmount: 0
         });
         console.info(`Guard ${eachGuard.label} wallet not allowlisted!`);

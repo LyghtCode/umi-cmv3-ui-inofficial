@@ -26,6 +26,7 @@ interface INFT {
 const MintComplete = () => {
     const umi = useUmi();
     const wallet = useWallet();
+    // get balance of wallet
     const [nfts, setNfts] = useState<INFT[]>([]); // Use the INFT interface here
     // scroll to section
     const [isLoading, setIsLoading] = useState(false);
