@@ -385,7 +385,7 @@ export function ButtonList({
                 <div key={index} className="z-10">
                     <div className="md:mt-2">
                         <h3 className='text-xl md:text-2xl text-black font-bold'>
-                            {buttonGuard.label}
+                            {buttonGuard.label === "Public" ? `Public Sale` : `Whitelist`}
                         </h3>
                         <p>
                             {
@@ -472,7 +472,7 @@ export function ButtonList({
                         </div>
                     ) : (
                         <div className="w-full justify-start mt-2 space-y-2">
-                            <button className='flex items-center justify-center h-10 rounded-full md:mt-0 text-black px-4 w-72 font-semibold '>
+                            <button className='flex items-center justify-center h-10 bg-gray-300 rounded-full md:mt-0 text-white px-4 w-64 font-semibold '>
                                 {buttonGuard.allowed ? "Mint Now!" : `${buttonGuard.reason}`}
                             </button>
                         </div>

@@ -202,7 +202,7 @@ export const guardChecker = async (
         guardReturn.push({
           label: eachGuard.label,
           allowed: false,
-          reason: "Mint limit of this wallet reached",
+          reason: "Wallet limit reached!",
           maxAmount: 0
         });
         console.info(`Guard ${eachGuard.label}; mintLimit reached`);
