@@ -389,7 +389,7 @@ export function ButtonList({
                         </h3>
                         <p>
                             {
-                                buttonGuard.label === "Public" ? `Whitelist max 5 per wallet.` : `Public max 25 per wallet.`
+                                buttonGuard.label === "Public" ? `Public max 25 per wallet.` : `Whitelist max 5 per wallet.`
                             }
                         </p>
                     </div>
@@ -472,7 +472,7 @@ export function ButtonList({
                         </div>
                     ) : (
                         <div className="w-full justify-start mt-2 space-y-2">
-                            <button className='flex items-center justify-center h-10 bg-[#e05e5c] rounded-full md:mt-0 text-white px-4 w-64 font-semibold '>
+                            <button className='flex items-center justify-center h-10 rounded-full md:mt-0 text-black px-4 w-72 font-semibold '>
                                 {buttonGuard.allowed ? "Mint Now!" : `${buttonGuard.reason}`}
                             </button>
                         </div>
