@@ -389,7 +389,7 @@ export function ButtonList({
                         </h3>
                         <p>
                             {
-                                buttonGuard.label === "Public" ? `Public max 25 per wallet.` : `Whitelist max 5 per wallet.`
+                                buttonGuard.label === "Public" ? `Max 25 per wallet.` : `Max 5 per wallet.`
                             }
                         </p>
                     </div>
