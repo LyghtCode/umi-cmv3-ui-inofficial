@@ -200,29 +200,61 @@ const MintComplete = () => {
                 <p className="text-white text-xl font-bold mb-4">
                     Share your mints on X (Twitter) to receive a $SOL rebate:
                 </p>
-                <div className="overflow-hidden md:w-[50%]">
-                    <table className="min-w-full">
-                        <thead className="border">
-                            <tr className="border">
-                                <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
-                                    NFTs MINTED
-                                </th>
-                                <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
-                                    REBATE PER NFT
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="border text-white">
-                            <tr className="border">
-                                <td className="py-2 px-4 border">Whitelisted 1 - 4</td>
-                                <td className="py-2 px-4 border">0.1</td>
-                            </tr>
-                            <tr>
-                                <td className="py-2 px-4 border">Whitelisted 5 (Max)</td>
-                                <td className="py-2 px-4 border">0.2</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="flex flex-col md:flex-row gap-4">
+                    <div className="overflow-hidden ">
+                        <h4 className="text-xl mb-2 md:mb-0 md:text-3xl font-bold text-white text-left">Whitelisters Rebate</h4>
+                        <table className="min-w-full">
+                            <thead className="border">
+                                <tr className="border">
+                                    <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
+                                        NFTs MINTED
+                                    </th>
+                                    <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
+                                        REBATE PER NFT
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="border text-white">
+                                <tr className="border">
+                                    <td className="py-2 px-4 border">Whitelisted 1 - 4</td>
+                                    <td className="py-2 px-4 border">0.1</td>
+                                </tr>
+                                <tr>
+                                    <td className="py-2 px-4 border">Whitelisted 5 (Max)</td>
+                                    <td className="py-2 px-4 border">0.2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="overflow-hidden ">
+                        <h4 className="text-xl mb-2 md:mb-0 md:text-3xl font-bold text-white text-left">Public Rebate</h4>
+                        <table className="min-w-full">
+                            <thead className="border">
+                                <tr className="border">
+                                    <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
+                                        NFTs MINTED
+                                    </th>
+                                    <th className="text-sm border font-semibold text-white py-2 px-4 text-left">
+                                        REBATE PER NFT
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="border text-white">
+                                <tr className="border">
+                                    <td className="py-2 px-4 border">1 - 5</td>
+                                    <td className="py-2 px-4 border">0</td>
+                                </tr>
+                                <tr className="border">
+                                    <td className="py-2 px-4 border">6 - 20</td>
+                                    <td className="py-2 px-4 border">0.1</td>
+                                </tr>
+                                <tr>
+                                    <td className="py-2 px-4 border">21 - 25</td>
+                                    <td className="py-2 px-4 border">0.2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="mt-4">
                     <p className="text-white text-xl">
