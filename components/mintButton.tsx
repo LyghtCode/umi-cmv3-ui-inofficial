@@ -363,7 +363,7 @@ export function ButtonList({
             allowed: guard.allowed,
             header: text
                 ? text.header
-                : "",
+                : ",
             buttonLabel: text
                 ? text.buttonLabel
                 : "Mint Now!",
