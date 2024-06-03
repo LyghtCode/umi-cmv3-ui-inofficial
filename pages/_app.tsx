@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
   if (process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet-beta" || process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet") {
     network = WalletAdapterNetwork.Mainnet;
   }
-  let endpoint = "https://old-aged-paper.solana-mainnet.quiknode.pro/7d66d9c1cc26ad6b08fdfb6082cbd7c3aefe96c5/";
+  let endpoint = "https://greatest-white-energy.solana-mainnet.quiknode.pro/ae601942a3024081e44d8d1f0e04d30f058671b8/";
   if (process.env.NEXT_PUBLIC_RPC) {
     // endpoint = process.env.NEXT_PUBLIC_RPC;
-    endpoint = "https://old-aged-paper.solana-mainnet.quiknode.pro/7d66d9c1cc26ad6b08fdfb6082cbd7c3aefe96c5/"
+    endpoint = "https://greatest-white-energy.solana-mainnet.quiknode.pro/ae601942a3024081e44d8d1f0e04d30f058671b8/"
   }
   const wallets = useMemo(
     () => [
